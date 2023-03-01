@@ -16,7 +16,7 @@ class MainCoordinator {
     
     func start() {
         let vm = BrowseViewModel()
-        let vc = BrowseVC(coordinator: self)
+        let vc = BrowseVC(coordinator: self, viewModel: vm)
         navController.pushViewController(vc, animated: true)
     }
 }
