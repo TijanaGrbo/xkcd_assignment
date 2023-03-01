@@ -17,6 +17,10 @@ class BrowseVC: UIViewController {
     var coordinator: MainCoordinator
     var browseViewModel: BrowseViewModel
     
+    var comic: Comic? { didSet {
+        refreshViews()
+    }}
+    
     init(coordinator: MainCoordinator, viewModel: BrowseViewModel) {
         self.coordinator = coordinator
         self.browseViewModel = viewModel
@@ -38,7 +42,12 @@ class BrowseVC: UIViewController {
             DispatchQueue.main.async {
                 self.comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
             }
+            refreshViews()
         }
+    }
+    
+    func refreshViews() {
+        self.comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
