@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class BrowseVC: UIViewController {
     
@@ -17,6 +18,7 @@ class BrowseVC: UIViewController {
     var coordinator: MainCoordinator
     var browseViewModel: BrowseViewModel
     
+    var cancelable: AnyCancellable?
     var comic: Comic? { didSet {
         refreshViews()
     }}
@@ -34,16 +36,20 @@ class BrowseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        bindViewModel()
     }
     
     func setupViews() {
         Task {
             await browseViewModel.getLatestComic()
-            DispatchQueue.main.async {
-                self.comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
-            }
             refreshViews()
         }
+    }
+    
+    func bindViewModel() {
+        cancelable = browseViewModel.$comic
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.comic, on: self)
     }
     
     func refreshViews() {
