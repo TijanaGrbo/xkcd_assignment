@@ -10,7 +10,6 @@
 		E673D11929AF7AB100F2CF69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D11829AF7AB100F2CF69 /* AppDelegate.swift */; };
 		E673D11B29AF7AB100F2CF69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D11A29AF7AB100F2CF69 /* SceneDelegate.swift */; };
 		E673D11D29AF7AB100F2CF69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D11C29AF7AB100F2CF69 /* ViewController.swift */; };
-		E673D12029AF7AB100F2CF69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E673D11E29AF7AB100F2CF69 /* Main.storyboard */; };
 		E673D12229AF7AB300F2CF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E673D12129AF7AB300F2CF69 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -19,7 +18,6 @@
 		E673D11829AF7AB100F2CF69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E673D11A29AF7AB100F2CF69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E673D11C29AF7AB100F2CF69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E673D11F29AF7AB100F2CF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E673D12129AF7AB300F2CF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E673D12629AF7AB300F2CF69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,7 +55,6 @@
 				E673D11829AF7AB100F2CF69 /* AppDelegate.swift */,
 				E673D11A29AF7AB100F2CF69 /* SceneDelegate.swift */,
 				E673D11C29AF7AB100F2CF69 /* ViewController.swift */,
-				E673D11E29AF7AB100F2CF69 /* Main.storyboard */,
 				E673D12129AF7AB300F2CF69 /* Assets.xcassets */,
 				E673D12629AF7AB300F2CF69 /* Info.plist */,
 			);
@@ -123,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E673D12229AF7AB300F2CF69 /* Assets.xcassets in Resources */,
-				E673D12029AF7AB100F2CF69 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,17 +137,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E673D11E29AF7AB100F2CF69 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E673D11F29AF7AB100F2CF69 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E673D12729AF7AB300F2CF69 /* Debug */ = {
