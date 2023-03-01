@@ -42,11 +42,20 @@ class BrowseVC: UIViewController {
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
+        Task {
+            await browseViewModel.getPreviousComic()
+        }
     }
     
     @IBAction func latestButtonTapped(_ sender: Any) {
+        Task {
+            await browseViewModel.getLatestComic()
+        }
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
+        Task {
+            await browseViewModel.getNextComic()
+        }
     }
 }
