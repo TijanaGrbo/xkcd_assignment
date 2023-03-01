@@ -9,6 +9,7 @@ import UIKit
 
 class BrowseVC: UIViewController {
     
+    @IBOutlet weak var comicImageView: UIImageView!
     
     var coordinator: MainCoordinator
     
