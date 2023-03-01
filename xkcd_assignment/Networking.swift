@@ -49,7 +49,7 @@ class ComicAPI {
         return try await fetchComic(from: url)
     }
 
-    func getComicWithNum(withNum comicNum: Int) async throws -> Comic {
+    func getComic(withNum comicNum: Int) async throws -> Comic {
         guard let url = Endpoint.withNum(comicNum: comicNum).url else { throw APIError.badURL }
         return try await fetchComic(from: url)
     }
