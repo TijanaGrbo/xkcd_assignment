@@ -26,6 +26,15 @@ class BrowseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
     }
     
+    func setupViews() {
+        Task {
+            await browseViewModel.getLatestComic()
+            DispatchQueue.main.async {
+                self.comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
+            }
+        }
+    }
 }
