@@ -10,6 +10,9 @@ import UIKit
 class BrowseVC: UIViewController {
     
     @IBOutlet weak var comicImageView: UIImageView!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var latestButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     var coordinator: MainCoordinator
     var browseViewModel: BrowseViewModel
@@ -36,5 +39,14 @@ class BrowseVC: UIViewController {
                 self.comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
             }
         }
+    }
+    
+    @IBAction func previousButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func latestButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
     }
 }

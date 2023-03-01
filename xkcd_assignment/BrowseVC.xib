@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrowseVC" customModule="xkcd_assignment" customModuleProvider="target">
             <connections>
                 <outlet property="comicImageView" destination="2hK-j3-OYi" id="yLC-z8-3z3"/>
+                <outlet property="latestButton" destination="IhS-qn-dYb" id="rtA-Hn-6IW"/>
+                <outlet property="nextButton" destination="eoc-VG-tFv" id="LXQ-uI-1cl"/>
+                <outlet property="previousButton" destination="2yB-tn-BBR" id="iQZ-m3-3WU"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lez-jA-bT5"/>
             </connections>
         </placeholder>
@@ -29,6 +32,9 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Previous"/>
+                    <connections>
+                        <action selector="previousButtonTapped:" destination="-1" eventType="touchUpInside" id="lzy-DT-HhU"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoc-VG-tFv">
                     <rect key="frame" x="262" y="762" width="131" height="56"/>
@@ -37,6 +43,9 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Next"/>
+                    <connections>
+                        <action selector="nextButtonTapped:" destination="-1" eventType="touchUpInside" id="kYU-Nn-u0G"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhS-qn-dYb">
                     <rect key="frame" x="131" y="762" width="131" height="56"/>
@@ -45,6 +54,9 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Latest"/>
+                    <connections>
+                        <action selector="latestButtonTapped:" destination="-1" eventType="touchUpInside" id="6aR-PR-jjm"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
