@@ -12,9 +12,11 @@ class BrowseVC: UIViewController {
     @IBOutlet weak var comicImageView: UIImageView!
     
     var coordinator: MainCoordinator
+    var browseViewModel: BrowseViewModel
     
     init(coordinator: MainCoordinator, viewModel: BrowseViewModel) {
         self.coordinator = coordinator
+        self.browseViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
