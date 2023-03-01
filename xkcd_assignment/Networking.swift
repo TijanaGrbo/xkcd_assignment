@@ -16,7 +16,7 @@ enum Endpoint {
         case .latestComic:
             return generateURL()
         case .withNum(let comicNum):
-            return generateURL(withNum: "\(comicNum)")
+            return generateURL(withNum: "/\(comicNum)")
         }
     }
     
