@@ -14,7 +14,7 @@ struct Comic: Codable, Identifiable, Equatable {
     }
     
     let num: Int
-    let transcript: String
+    let alt: String
     let title: String
     let img: String
     
