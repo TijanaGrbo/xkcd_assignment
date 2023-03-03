@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchVC" customModule="xkcd_assignment" customModuleProvider="target">
+            <connections>
+                <outlet property="comicImageView" destination="mmC-p3-Snw" id="5Ki-OW-UqQ"/>
+                <outlet property="comicNumLabel" destination="FkM-Tf-G8n" id="ewT-bY-W01"/>
+                <outlet property="sliderView" destination="cvK-Ed-P0S" id="SZB-tn-sMf"/>
+                <outlet property="view" destination="iN0-l3-epB" id="NZh-Po-Wfo"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cvK-Ed-P0S">
+                    <rect key="frame" x="14" y="59" width="263.33333333333331" height="31"/>
+                </slider>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FkM-Tf-G8n">
+                    <rect key="frame" x="299.33333333333331" y="59" width="77.666666666666686" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="E7X-j3-LbZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mmC-p3-Snw">
+                    <rect key="frame" x="0.0" y="93" width="393" height="759"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mmC-p3-Snw" secondAttribute="trailing" id="1HA-jX-VHf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FkM-Tf-G8n" secondAttribute="trailing" constant="16" id="2kj-EV-7Ta"/>
+                <constraint firstItem="cvK-Ed-P0S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Hd3-Cn-5wB"/>
+                <constraint firstItem="cvK-Ed-P0S" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="MDQ-3i-SZX"/>
+                <constraint firstItem="cvK-Ed-P0S" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Mxu-48-iGs"/>
+                <constraint firstAttribute="bottom" secondItem="mmC-p3-Snw" secondAttribute="bottom" id="mtU-Od-8hO"/>
+                <constraint firstItem="mmC-p3-Snw" firstAttribute="top" secondItem="FkM-Tf-G8n" secondAttribute="bottom" id="oML-aK-1sK"/>
+                <constraint firstItem="mmC-p3-Snw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uQ6-hk-V31"/>
+                <constraint firstItem="FkM-Tf-G8n" firstAttribute="width" secondItem="cvK-Ed-P0S" secondAttribute="width" multiplier="0.3" id="uXP-pY-5iq"/>
+                <constraint firstItem="FkM-Tf-G8n" firstAttribute="top" secondItem="cvK-Ed-P0S" secondAttribute="top" id="vfp-GB-5Hb"/>
+                <constraint firstItem="FkM-Tf-G8n" firstAttribute="leading" secondItem="cvK-Ed-P0S" secondAttribute="trailing" constant="24" id="wzA-MI-laJ"/>
+            </constraints>
+            <point key="canvasLocation" x="136.64122137404578" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
