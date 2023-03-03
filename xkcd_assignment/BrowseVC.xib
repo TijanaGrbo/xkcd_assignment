@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrowseVC" customModule="xkcd_assignment" customModuleProvider="target">
             <connections>
                 <outlet property="comicImageView" destination="2hK-j3-OYi" id="yLC-z8-3z3"/>
+                <outlet property="favouriteButton" destination="xRP-ch-0zf" id="HAF-rK-swW"/>
                 <outlet property="latestButton" destination="IhS-qn-dYb" id="rtA-Hn-6IW"/>
                 <outlet property="nextButton" destination="eoc-VG-tFv" id="LXQ-uI-1cl"/>
                 <outlet property="previousButton" destination="2yB-tn-BBR" id="iQZ-m3-3WU"/>
@@ -58,18 +59,29 @@
                         <action selector="latestButtonTapped:" destination="-1" eventType="touchUpInside" id="6aR-PR-jjm"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRP-ch-0zf">
+                    <rect key="frame" x="262" y="703.66666666666663" width="131" height="34.333333333333371"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <connections>
+                        <action selector="favouriteButtonTapped:" destination="-1" eventType="touchUpInside" id="BAl-Vs-n3q"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eoc-VG-tFv" secondAttribute="trailing" id="0mb-wi-grv"/>
                 <constraint firstItem="2yB-tn-BBR" firstAttribute="width" secondItem="IhS-qn-dYb" secondAttribute="width" id="343-5S-Y4P"/>
+                <constraint firstItem="xRP-ch-0zf" firstAttribute="width" secondItem="eoc-VG-tFv" secondAttribute="width" id="9IW-FV-eSG"/>
                 <constraint firstItem="eoc-VG-tFv" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9Kf-gL-AQi"/>
                 <constraint firstItem="2yB-tn-BBR" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9Qc-hn-U7c"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2hK-j3-OYi" secondAttribute="trailing" id="9W4-s0-OKn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xRP-ch-0zf" secondAttribute="trailing" id="COl-bv-lXz"/>
                 <constraint firstItem="IhS-qn-dYb" firstAttribute="width" secondItem="eoc-VG-tFv" secondAttribute="width" id="DcZ-BI-OVJ"/>
                 <constraint firstItem="IhS-qn-dYb" firstAttribute="leading" secondItem="2yB-tn-BBR" secondAttribute="trailing" id="M8C-z9-zVp"/>
                 <constraint firstItem="2yB-tn-BBR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MqU-Wp-B08"/>
+                <constraint firstItem="eoc-VG-tFv" firstAttribute="top" secondItem="xRP-ch-0zf" secondAttribute="bottom" constant="24" id="Q3Q-9D-lSB"/>
                 <constraint firstItem="IhS-qn-dYb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Tkd-kO-Plh"/>
                 <constraint firstItem="2hK-j3-OYi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="YDq-OC-FPz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2hK-j3-OYi" secondAttribute="bottom" id="h9W-cc-xvF"/>

@@ -14,6 +14,7 @@ class BrowseVC: UIViewController {
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var latestButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var favouriteButton: UIButton!
     
     var coordinator: MainCoordinator
     var browseViewModel: BrowseViewModel
@@ -21,6 +22,9 @@ class BrowseVC: UIViewController {
     var cancelable: AnyCancellable?
     var comic: Comic? { didSet {
         refreshViews()
+    }}
+    var isLiked: Bool? { didSet {
+        setupFavouriteButton()
     }}
     
     init(coordinator: MainCoordinator, viewModel: BrowseViewModel) {
@@ -39,9 +43,14 @@ class BrowseVC: UIViewController {
         bindViewModel()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("appear")
+    }
+    
     func setupViews() {
         Task {
             await browseViewModel.getLatestComic()
+            setupFavouriteButton()
             refreshViews()
         }
     }
@@ -52,8 +61,19 @@ class BrowseVC: UIViewController {
             .assign(to: \.comic, on: self)
     }
     
+    func setupFavouriteButton() {
+        favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        favouriteButton.setTitle("", for: .normal)
+        refreshFavouriteButton()
+    }
+    
+    func refreshFavouriteButton() {
+        favouriteButton.tintColor = UIColor(browseViewModel.checkIfLiked() ? .red : .blue)
+    }
+    
     func refreshViews() {
-        self.comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
+        comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
+        refreshFavouriteButton()
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
@@ -72,5 +92,11 @@ class BrowseVC: UIViewController {
         Task {
             await browseViewModel.getNextComic()
         }
+    }
+    
+    @IBAction func favouriteButtonTapped(_ sender: Any) {
+        guard let comicImage = comicImageView.image else { return }
+        browseViewModel.favouriteButtonTapped(comicImage: comicImage)
+        refreshFavouriteButton()
     }
 }
