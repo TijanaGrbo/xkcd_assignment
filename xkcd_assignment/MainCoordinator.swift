@@ -9,9 +9,11 @@ import UIKit
 
 class MainCoordinator {
     var navController: UINavigationController
+    let storageProvider: StorageProvider
     
-    init(navController: UINavigationController) {
+    init(navController: UINavigationController, storageProvider: StorageProvider) {
         self.navController = navController
+        self.storageProvider = storageProvider
     }
     
     func start() {
