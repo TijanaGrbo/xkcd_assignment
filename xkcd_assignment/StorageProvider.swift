@@ -27,3 +27,67 @@ class StorageProvider: ObservableObject {
     }
 }
 
+extension StorageProvider {
+    func saveComicToFavourites(_ comic: Comic, withImage comicImage: UIImage) {
+        let favouriteComic = FavouriteComic(context: persistentContainer.viewContext)
+        favouriteComic.num = Int16(comic.num)
+        favouriteComic.title = comic.title
+        favouriteComic.alt = comic.alt
+        favouriteComic.image = comicImage
+
+        do {
+            try persistentContainer.viewContext.save()
+            print("Comic saved succesfully")
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to save comic: \(error)")
+        }
+    
+    }
+    
+    func removeComicFromFavourites(_ comicNum: Int) {
+        let fetchRequest: NSFetchRequest<FavouriteComic> = FavouriteComic.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "num == %d", comicNum)
+
+        do {
+            let results = try self.persistentContainer.viewContext.fetch(fetchRequest)
+            if let comic = results.first {
+                persistentContainer.viewContext.delete(comic)
+                do {
+                    try persistentContainer.viewContext.save()
+                    print("Comic deleted succesfully")
+                } catch {
+                    persistentContainer.viewContext.rollback()
+                    print("Failed to save context: \(error)")
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch comic: \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getFavouriteComics() -> [FavouriteComic] {
+        let fetchRequest: NSFetchRequest<FavouriteComic> = FavouriteComic.fetchRequest()
+        var results: [FavouriteComic] = []
+        
+        do {
+            results = try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Failed to lode from CoreData. Error: \(error)")
+        }
+        print(results.count)
+        return results
+    }
+    
+    func isFavourite(comicNum: Int) -> Bool {
+        let fetchRequest: NSFetchRequest<FavouriteComic> = FavouriteComic.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(FavouriteComic.num), comicNum)
+        
+        do {
+            guard var _ = try persistentContainer.viewContext.fetch(fetchRequest).first else { return false }
+            return true
+        } catch {
+            return false
+        }
+    }
+}
