@@ -35,7 +35,7 @@
                         <constraint firstAttribute="height" constant="48" id="62j-Dj-LMF"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Share"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
                         <action selector="shareButtonTapped:" destination="-1" eventType="touchUpInside" id="9Ei-dD-IPs"/>
                     </connections>
@@ -46,7 +46,7 @@
                         <constraint firstAttribute="height" constant="56" id="QIP-xC-zKg"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Previous"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
                         <action selector="previousButtonTapped:" destination="-1" eventType="touchUpInside" id="lzy-DT-HhU"/>
                     </connections>
@@ -57,7 +57,7 @@
                         <constraint firstAttribute="height" constant="56" id="w9x-a0-XlF"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Next"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
                         <action selector="nextButtonTapped:" destination="-1" eventType="touchUpInside" id="kYU-Nn-u0G"/>
                     </connections>
@@ -68,7 +68,7 @@
                         <constraint firstAttribute="height" constant="56" id="hc1-EO-Umr"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Latest"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
                         <action selector="latestButtonTapped:" destination="-1" eventType="touchUpInside" id="6aR-PR-jjm"/>
                     </connections>
@@ -79,7 +79,7 @@
                         <constraint firstAttribute="height" constant="48" id="Xca-WN-IBB"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Favourite"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
                         <action selector="favouriteButtonTapped:" destination="-1" eventType="touchUpInside" id="BAl-Vs-n3q"/>
                     </connections>
