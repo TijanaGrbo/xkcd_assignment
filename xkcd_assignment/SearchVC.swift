@@ -45,7 +45,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
             refreshViews()
             setupSlider()
             setupComicNumLabel()
-            setupTitle()
+            setupNameLabel()
             configureAccessibility()
             setupBackground()
         }
@@ -85,13 +85,14 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         comicNumValueChanged(comicNumLabel)
     }
     
-    func setupTitle() {
+    func setupNameLabel() {
         comicNameLabel.text = comic?.title
+        comicNameLabel.font = .monospacedSystemFont(ofSize: 28, weight: .black)
     }
     
     func refreshViews() {
         comicImageView.kf.setImage(with: comic?.imgURL)
-        setupTitle()
+        setupNameLabel()
     }
     
     func configureAccessibility() {
