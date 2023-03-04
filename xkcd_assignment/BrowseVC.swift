@@ -79,7 +79,9 @@ class BrowseVC: UIViewController {
     
     func setupHeaderLabels() {
         comicTitle.text = viewModel.setComicTitle()
+        comicTitle.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicNum.text = viewModel.setComicNum()
+        comicNum.font = .monospacedDigitSystemFont(ofSize: 18, weight: .bold)
     }
     
     func setupFavouriteButton() {
@@ -89,7 +91,7 @@ class BrowseVC: UIViewController {
     }
     
     func refreshFavouriteButton() {
-        favouriteButton.tintColor = UIColor(viewModel.checkIfLiked() ? .red : .black)
+        favouriteButton.tintColor = UIColor(viewModel.checkIfLiked() ? .red : .primary)
     }
     
     func setupNavigationButtons() {
@@ -110,7 +112,7 @@ class BrowseVC: UIViewController {
         nextButton.setTitle("", for: .normal)
         
         #warning("forEach")
-        previousButton.tintColor = .black.withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.5)
+        previousButton.tintColor = UIColor(.secondary).withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.5)
         latestButton.tintColor = .black.withAlphaComponent(viewModel.getLatestButtonState() ? 1.0 : 0.5)
         nextButton.tintColor = .black.withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.5)
         
