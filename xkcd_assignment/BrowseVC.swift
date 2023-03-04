@@ -59,6 +59,7 @@ class BrowseVC: UIViewController {
             await viewModel.getLatestComic()
             setupHeaderLabels()
             setupNavigationButtons()
+            setupAccessibilityIdentifiers()
             setupFavouriteButton()
             refreshViews()
         }
@@ -116,6 +117,14 @@ class BrowseVC: UIViewController {
         previousButton.setImage(previousButtonImage, for: .normal)
         latestButton.setImage(latestButtonImage, for: .normal)
         nextButton.setImage(nextButtonImage, for: .normal)
+    }
+    
+    func setupAccessibilityIdentifiers() {
+        comicNum.accessibilityIdentifier = AccessibilityIdentifier.comicNum.rawValue
+        nextButton.accessibilityIdentifier = AccessibilityIdentifier.nextButton.rawValue
+        previousButton.accessibilityIdentifier = AccessibilityIdentifier.prevButton.rawValue
+        latestButton.accessibilityIdentifier = AccessibilityIdentifier.latestButton.rawValue
+        comicImageView.accessibilityIdentifier = "\(comic?.num ?? 0)"
     }
     
     func refreshButtonState() {
