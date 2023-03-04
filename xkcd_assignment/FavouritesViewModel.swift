@@ -38,7 +38,7 @@ class FavouritesViewModel: ComicViewModel {
         comic = favouriteComics[currentIndex]
     }
     
-    func getNextComic() async {
+    func getNextComic() {
         guard !favouriteComics.isEmpty, currentIndex < favouriteComics.count - 1 else { return }
         currentIndex += 1
         comic = favouriteComics[currentIndex]
@@ -51,24 +51,6 @@ extension FavouritesViewModel {
         getLatestComic()
     }
     
-    func setComic() {
-        guard !favouriteComics.isEmpty else { return }
-        latestComicIndex = favouriteComics.count - 1
-        currentIndex = latestComicIndex
-        comic = favouriteComics[latestComicIndex]
-    }
-    #warning("scope of methods")
-    func refreshComic() {
-        loadFromFavourites()
-        latestComicIndex = favouriteComics.count - 1
-        currentIndex = currentIndex - 1
-        comic = favouriteComics[latestComicIndex]
-    }
-    
-    func comicImage() -> UIImage? {
-        return comic?.image
-    }
-    
     func setComicTitle() -> String {
         guard let comicTitle = comic?.title else { return "" }
         return comicTitle
@@ -77,6 +59,10 @@ extension FavouritesViewModel {
     func setComicNum() -> String {
         guard let comicNum = comic?.num else { return "" }
         return "#\(comicNum)"
+    }
+
+    func comicImage() -> UIImage? {
+        return comic?.image
     }
     
     func checkIfLiked() -> Bool {
@@ -89,6 +75,19 @@ extension FavouritesViewModel {
         }
     }
     
+    func favouriteButtonTapped(comicImage: UIImage) {
+        guard let num = comic?.num else { return }
+        let comicNum = Int(num)
+        if storageProvider.isFavourite(comicNum: comicNum) {
+            storageProvider.removeComicFromFavourites(comicNum)
+            reloadComicSelection()
+        } else {
+            return
+        }
+    }
+}
+
+extension FavouritesViewModel {
     func getPreviousButtonState() -> Bool {
         return currentIndex > 0
     }
@@ -100,15 +99,20 @@ extension FavouritesViewModel {
     func getNextButtonState() -> Bool {
         return currentIndex < favouriteComics.count - 1
     }
-    
-    func favouriteButtonTapped(comicImage: UIImage) {
-        guard let num = comic?.num else { return }
-        let comicNum = Int(num)
-        if storageProvider.isFavourite(comicNum: comicNum) {
-            storageProvider.removeComicFromFavourites(comicNum)
-            refreshComic()
-        } else {
-            return
-        }
+}
+
+private extension FavouritesViewModel {
+    func setComic() {
+        guard !favouriteComics.isEmpty else { return }
+        latestComicIndex = favouriteComics.count - 1
+        currentIndex = latestComicIndex
+        comic = favouriteComics[latestComicIndex]
+    }
+
+    func reloadComicSelection() {
+        loadFromFavourites()
+        latestComicIndex = favouriteComics.count - 1
+        currentIndex = currentIndex - 1
+        comic = favouriteComics[latestComicIndex]
     }
 }
