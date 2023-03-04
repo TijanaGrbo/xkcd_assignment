@@ -22,13 +22,3 @@ struct Comic: Codable, Identifiable, Equatable {
         return URL(string: img)
     }
 }
-
-// full model parameters. Not needed for now.
-//let alt: String
-//let day: String
-//let month: String
-//let year: String
-//let link: String
-//let news: String
-//let safeTitle: String
-//let transcript: String
