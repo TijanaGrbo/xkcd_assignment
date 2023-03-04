@@ -114,7 +114,7 @@ class BrowseVC: UIViewController {
     }
     
     func refreshFavouriteButton() {
-        favouriteButton.tintColor = UIColor(viewModel.checkIfLiked() ? .red : .primary)
+        favouriteButton.tintColor = viewModel.checkIfLiked() ? UIColor(red: 199/255.0, green: 30/255.0, blue: 30/255.0, alpha: 1.0) : UIColor(.primary)
     }
     
     func setupNavigationButtons() {
@@ -135,9 +135,9 @@ class BrowseVC: UIViewController {
         nextButton.setTitle("", for: .normal)
         
         #warning("forEach")
-        previousButton.tintColor = UIColor(.secondary).withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.5)
-        latestButton.tintColor = .black.withAlphaComponent(viewModel.getLatestButtonState() ? 1.0 : 0.5)
-        nextButton.tintColor = .black.withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.5)
+        previousButton.tintColor = UIColor(.primary).withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.8)
+        latestButton.tintColor = UIColor(.primary).withAlphaComponent(viewModel.getLatestButtonState() ? 1.0 : 0.8)
+        nextButton.tintColor = UIColor(.primary).withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.8)
         
         previousButton.setImage(previousButtonImage, for: .normal)
         latestButton.setImage(latestButtonImage, for: .normal)
