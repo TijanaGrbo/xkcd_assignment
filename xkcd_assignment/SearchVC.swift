@@ -43,11 +43,10 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         Task {
             await searchViewModel.getLatestComic()
             refreshViews()
-            setupSlider()
-            setupComicNumLabel()
-            setupNameLabel()
             configureAccessibility()
+            setupComicNumLabel()
             setupBackground()
+            setupSlider()
         }
     }
     
@@ -73,14 +72,14 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     
     func setupSlider() {
         sliderView.minimumValue = 1
-        sliderView.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        sliderView.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         sliderView.maximumValue = Float(searchViewModel.latestComicNum ?? 0)
         sliderView.value = sliderView.maximumValue
         sliderValueChanged(sliderView)
     }
     
     func setupComicNumLabel() {
-        comicNumLabel.addTarget(self, action: #selector(comicNumValueChanged(_:)), for: .allEditingEvents)
+        comicNumLabel.addTarget(self, action: #selector(comicNumValueChanged), for: .allEditingEvents)
         comicNumLabel.text = String(Int(sliderView.value))
         comicNumValueChanged(comicNumLabel)
     }
@@ -94,7 +93,9 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         comicImageView.kf.setImage(with: comic?.imgURL)
         setupNameLabel()
     }
-    
+}
+
+extension SearchVC {
     func configureAccessibility() {
         guard let comic = comic else { return }
         comicNameLabel.isAccessibilityElement = true
@@ -106,7 +107,9 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         comicImageView.isAccessibilityElement = true
         comicImageView.accessibilityLabel = comic.alt
     }
-    
+}
+
+extension SearchVC {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
