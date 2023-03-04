@@ -15,6 +15,8 @@ class BrowseVC: UIViewController {
     @IBOutlet weak var latestButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var favouriteButton: UIButton!
+    @IBOutlet weak var comicTitle: UILabel!
+    @IBOutlet weak var comicNum: UILabel!
     
     var coordinator: MainCoordinator
     var browseViewModel: BrowseViewModel
@@ -50,6 +52,7 @@ class BrowseVC: UIViewController {
     func setupViews() {
         Task {
             await browseViewModel.getLatestComic()
+            setupHeaderLabels()
             setupFavouriteButton()
             refreshViews()
         }
@@ -59,6 +62,9 @@ class BrowseVC: UIViewController {
         cancelable = browseViewModel.$comic
             .receive(on: DispatchQueue.main)
             .assign(to: \.comic, on: self)
+    func setupHeaderLabels() {
+        comicTitle.text = viewModel.setComicTitle()
+        comicNum.text = viewModel.setComicNum()
     }
     
     func setupFavouriteButton() {
@@ -73,6 +79,8 @@ class BrowseVC: UIViewController {
     
     func refreshViews() {
         comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
+        setupHeaderLabels()
+        setupHeaderLabels()
         refreshFavouriteButton()
     }
     
