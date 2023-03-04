@@ -15,6 +15,7 @@ class BrowseVC: UIViewController {
     @IBOutlet weak var latestButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var favouriteButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var comicTitle: UILabel!
     @IBOutlet weak var comicNum: UILabel!
     
@@ -60,6 +61,7 @@ class BrowseVC: UIViewController {
             setupHeaderLabels()
             setupNavigationButtons()
             setupAccessibilityIdentifiers()
+            setupShareButton()
             setupFavouriteButton()
             refreshViews()
         }
@@ -82,6 +84,12 @@ class BrowseVC: UIViewController {
         comicTitle.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicNum.text = viewModel.setComicNum()
         comicNum.font = .monospacedDigitSystemFont(ofSize: 18, weight: .bold)
+    }
+    
+    func setupShareButton() {
+        shareButton.setImage(UIImage(systemName: "square.and.arrow.up.fill"), for: .normal)
+        shareButton.setTitle("", for: .normal)
+        shareButton.tintColor = UIColor(.primary)
     }
     
     func setupFavouriteButton() {
@@ -204,5 +212,10 @@ class BrowseVC: UIViewController {
         viewModel.favouriteButtonTapped(comicImage: comicImage)
         refreshFavouriteButton()
         configureAccessibility()
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        guard let imageURL = comic?.imgURL else { return }
+        coordinator.shareComic(imageURL)
     }
 }
