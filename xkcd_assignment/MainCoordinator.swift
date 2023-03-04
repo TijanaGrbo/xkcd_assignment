@@ -28,9 +28,14 @@ class MainCoordinator {
         
         let tabBar = TabBarVC()
         tabBar.viewControllers = [browseVC, favouritesVC, searchVC]
+        
+        let tabBarItemConfig = UIImage.SymbolConfiguration(textStyle: .footnote)
         tabBar.tabBar.items?[0].title = "Browse"
+        tabBar.tabBar.items?[0].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
         tabBar.tabBar.items?[1].title = "Favourites"
+        tabBar.tabBar.items?[1].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
         tabBar.tabBar.items?[2].title = "Search"
+        tabBar.tabBar.items?[2].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
         
         navController.pushViewController(tabBar, animated: true)
     }
