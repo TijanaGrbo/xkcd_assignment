@@ -68,15 +68,14 @@ extension StorageProvider {
     
     func getFavouriteComics() -> [FavouriteComic] {
         let fetchRequest: NSFetchRequest<FavouriteComic> = FavouriteComic.fetchRequest()
-        var results: [FavouriteComic] = []
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "num", ascending: true)]
         
         do {
-            results = try persistentContainer.viewContext.fetch(fetchRequest)
+            return try persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
-            print("Failed to lode from CoreData. Error: \(error)")
+            print("Failed to load from Core Data with error: \(error)")
+            return []
         }
-        print(results.count)
-        return results
     }
     
     func isFavourite(comicNum: Int) -> Bool {
