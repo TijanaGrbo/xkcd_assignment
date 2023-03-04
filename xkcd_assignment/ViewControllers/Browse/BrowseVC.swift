@@ -103,8 +103,10 @@ class BrowseVC: UIViewController {
     func setupHeaderLabels() {
         comicTitle.text = viewModel.setComicTitle()
         comicTitle.font = .monospacedSystemFont(ofSize: 28, weight: .black)
+        comicTitle.textColor = .black
         comicNum.text = viewModel.setComicNum()
         comicNum.font = .monospacedDigitSystemFont(ofSize: 18, weight: .bold)
+        comicNum.textColor = .black
     }
     
     func setupShareButton() {

@@ -35,6 +35,8 @@ class ComicDetailVC: UIViewController {
         comicDescriptionTitleLabel.text = comicTitle
         comicDetailLabel.text = detailLabelString
         comicDetailLabel.numberOfLines = 0
+        comicDetailLabel.textColor = .black
+        comicDescriptionTitleLabel.textColor = .black
         
         comicDescriptionTitleLabel.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicDetailLabel.font = .monospacedDigitSystemFont(ofSize: 16, weight: .semibold)

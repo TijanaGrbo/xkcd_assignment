@@ -85,12 +85,14 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         comicNumLabel.textAlignment = .center
         comicNumLabel.font = .monospacedSystemFont(ofSize: 18, weight: .bold)
         comicNumLabel.backgroundColor = .purple.withAlphaComponent(0.2)
+        comicNumLabel.textColor = .black
         comicNumValueChanged(comicNumLabel)
     }
     
     func setupNameLabel() {
         comicNameLabel.text = comic?.title
         comicNameLabel.font = .monospacedSystemFont(ofSize: 28, weight: .black)
+        comicNameLabel.textColor = .black
     }
     
     func refreshViews() {
