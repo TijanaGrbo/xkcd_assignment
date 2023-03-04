@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class SearchVC: UIViewController {
+class SearchVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var sliderView: UISlider!
     @IBOutlet weak var comicNumLabel: UITextField!
@@ -34,6 +34,7 @@ class SearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        comicNumLabel.delegate = self
         setupViews()
         bindViewModel()
     }
@@ -43,6 +44,7 @@ class SearchVC: UIViewController {
             await searchViewModel.getLatestComic()
             refreshViews()
             setupSlider()
+            setupComicNumLabel()
             setupTitle()
         }
     }
@@ -59,6 +61,12 @@ class SearchVC: UIViewController {
         sliderView.maximumValue = Float(searchViewModel.latestComicNum ?? 0)
         sliderView.value = sliderView.maximumValue
         sliderValueChanged(sliderView)
+    }
+    
+    func setupComicNumLabel() {
+        comicNumLabel.addTarget(self, action: #selector(comicNumValueChanged(_:)), for: .allEditingEvents)
+        comicNumLabel.text = String(Int(sliderView.value))
+        comicNumValueChanged(comicNumLabel)
     }
     
     func setupTitle() {
@@ -83,6 +91,18 @@ class SearchVC: UIViewController {
             guard let self = self else { return }
             Task {
                 await self.searchViewModel.getComic(withNum: Int(sender.value))
+            }
+        }
+    }
+    
+    @objc func comicNumValueChanged(_ sender: UITextField) {
+        guard let stringToConvert = sender.text else { return }
+        self.sliderView.value = Float(stringToConvert) ?? 0
+        debounceTimer?.invalidate()
+        debounceTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
+            guard let self = self else { return }
+            Task {
+                await self.searchViewModel.getComic(withNum: Int(stringToConvert) ?? 0)
             }
         }
     }
