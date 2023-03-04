@@ -47,6 +47,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
             setupComicNumLabel()
             setupTitle()
             configureAccessibility()
+            setupBackground()
         }
     }
     
@@ -54,6 +55,20 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         cancellable = searchViewModel.$comic
             .receive(on: DispatchQueue.main)
             .assign(to: \.comic, on: self)
+    }
+    
+    func setupBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor(displayP3Red: 155/255, green: 152/255, blue: 236/255, alpha: 1).cgColor,
+                                UIColor(displayP3Red: 217/255, green: 163/255, blue: 203/255, alpha: 1).cgColor,
+                                UIColor(displayP3Red: 227/255, green: 223/255, blue: 233/255, alpha: 1).cgColor]
+        gradientLayer.locations = [0.0, 0.5, 1.0]
+        gradientLayer.frame = view.bounds
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        comicImageView.layer.compositingFilter = "multiplyBlendMode"
     }
     
     func setupSlider() {
