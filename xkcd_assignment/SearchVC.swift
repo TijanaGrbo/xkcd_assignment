@@ -13,6 +13,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var sliderView: UISlider!
     @IBOutlet weak var comicNumLabel: UITextField!
     @IBOutlet weak var comicImageView: UIImageView!
+    @IBOutlet weak var comicNameLabel: UILabel!
     
     let searchViewModel: SearchViewModel
     
@@ -42,6 +43,7 @@ class SearchVC: UIViewController {
             await searchViewModel.getLatestComic()
             refreshViews()
             setupSlider()
+            setupTitle()
         }
     }
     
@@ -59,8 +61,13 @@ class SearchVC: UIViewController {
         sliderValueChanged(sliderView)
     }
     
+    func setupTitle() {
+        comicNameLabel.text = comic?.title
+    }
+    
     func refreshViews() {
         comicImageView.kf.setImage(with: comic?.imgURL)
+        setupTitle()
     }
     
     @objc func sliderValueChanged(_ sender: UISlider) {

@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchVC" customModule="xkcd_assignment" customModuleProvider="target">
             <connections>
                 <outlet property="comicImageView" destination="mmC-p3-Snw" id="5Ki-OW-UqQ"/>
+                <outlet property="comicNameLabel" destination="l0j-hE-K54" id="b50-Fj-yW8"/>
                 <outlet property="comicNumLabel" destination="FkM-Tf-G8n" id="ewT-bY-W01"/>
                 <outlet property="sliderView" destination="cvK-Ed-P0S" id="SZB-tn-sMf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="NZh-Po-Wfo"/>
@@ -22,7 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cvK-Ed-P0S">
-                    <rect key="frame" x="14" y="59" width="263.33333333333331" height="31"/>
+                    <rect key="frame" x="14" y="59" width="263.33333333333331" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="zv0-sI-Zjh"/>
+                    </constraints>
                 </slider>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FkM-Tf-G8n">
                     <rect key="frame" x="299.33333333333331" y="59" width="77.666666666666686" height="34"/>
@@ -33,19 +37,27 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mmC-p3-Snw">
-                    <rect key="frame" x="0.0" y="93" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="154" width="393" height="648"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ComicName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0j-hE-K54">
+                    <rect key="frame" x="16" y="117" width="377" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="l0j-hE-K54" firstAttribute="top" secondItem="cvK-Ed-P0S" secondAttribute="bottom" constant="24" id="1FY-vZ-y2i"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mmC-p3-Snw" secondAttribute="trailing" id="1HA-jX-VHf"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FkM-Tf-G8n" secondAttribute="trailing" constant="16" id="2kj-EV-7Ta"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mmC-p3-Snw" secondAttribute="bottom" constant="16" id="EPi-Yg-6Hs"/>
                 <constraint firstItem="cvK-Ed-P0S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Hd3-Cn-5wB"/>
                 <constraint firstItem="cvK-Ed-P0S" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="MDQ-3i-SZX"/>
-                <constraint firstItem="cvK-Ed-P0S" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Mxu-48-iGs"/>
-                <constraint firstAttribute="bottom" secondItem="mmC-p3-Snw" secondAttribute="bottom" id="mtU-Od-8hO"/>
-                <constraint firstItem="mmC-p3-Snw" firstAttribute="top" secondItem="FkM-Tf-G8n" secondAttribute="bottom" id="oML-aK-1sK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="l0j-hE-K54" secondAttribute="trailing" id="Md2-4n-mLI"/>
+                <constraint firstItem="mmC-p3-Snw" firstAttribute="top" secondItem="l0j-hE-K54" secondAttribute="bottom" constant="16" id="Rrd-qP-qly"/>
+                <constraint firstItem="l0j-hE-K54" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Zi6-Gz-zB9"/>
                 <constraint firstItem="mmC-p3-Snw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uQ6-hk-V31"/>
                 <constraint firstItem="FkM-Tf-G8n" firstAttribute="width" secondItem="cvK-Ed-P0S" secondAttribute="width" multiplier="0.3" id="uXP-pY-5iq"/>
                 <constraint firstItem="FkM-Tf-G8n" firstAttribute="top" secondItem="cvK-Ed-P0S" secondAttribute="top" id="vfp-GB-5Hb"/>
