@@ -10,14 +10,20 @@ import Kingfisher
 import UIKit
 import CoreData
 
-class BrowseViewModel {
+class BrowseViewModel: ComicViewModel {
     @Published var comic: Comic?
     
     var latestComicNum: Int?
     var storageProvider: StorageProvider
     
+    init(storageProvider: StorageProvider) {
+        self.storageProvider = storageProvider
+    }
+    
     func getPreviousComic() async {
-        guard var currentComicNum = comic?.num, let highestComicNum = latestComicNum, currentComicNum <= highestComicNum else { return }
+        guard var currentComicNum = comic?.num,
+              currentComicNum > 0
+        else { return }
         currentComicNum -= 1
         comic = try? await ComicAPI.shared.getComic(withNum: currentComicNum)
     }
@@ -28,17 +34,30 @@ class BrowseViewModel {
     }
     
     func getNextComic() async {
-        guard var currentComicNum = comic?.num, let highestComicNum = latestComicNum, currentComicNum < highestComicNum else { return }
+        guard var currentComicNum = comic?.num,
+              let highestComicNum = latestComicNum,
+              currentComicNum < highestComicNum
+        else { return }
         currentComicNum += 1
         comic = try? await ComicAPI.shared.getComic(withNum: currentComicNum)
-    }
-    
-    init(storageProvider: StorageProvider) {
-        self.storageProvider = storageProvider
     }
 }
 
 extension BrowseViewModel {
+    func comicImageURL() -> URL? {
+        return comic?.imgURL
+    }
+    
+    func setComicTitle() -> String {
+        guard let comicTitle = comic?.title else { return "" }
+        return comicTitle
+    }
+    
+    func setComicNum() -> String {
+        guard let comicNum = comic?.num else { return "" }
+        return String(comicNum)
+    }
+    
     func saveToFavourites(withImage image: UIImage) {
         guard let comic = comic else { return }
         storageProvider.saveComicToFavourites(comic, withImage: image)
@@ -66,5 +85,20 @@ extension BrowseViewModel {
         } else {
             return false
         }
+    }
+    
+    func getPreviousButtonState() -> Bool {
+        guard let currentComicNum = comic?.num else { return false }
+        return currentComicNum > 1
+    }
+    
+    func getLatestButtonState() -> Bool {
+        guard let currentComicNum = comic?.num else { return false }
+        return currentComicNum != latestComicNum
+    }
+    
+    func getNextButtonState() -> Bool {
+        guard let currentComicNum = comic?.num else { return false }
+        return currentComicNum < latestComicNum ?? 0
     }
 }

@@ -19,19 +19,22 @@ class BrowseVC: UIViewController {
     @IBOutlet weak var comicNum: UILabel!
     
     var coordinator: MainCoordinator
-    var browseViewModel: BrowseViewModel
+    var viewModel: ComicViewModel
     
     var cancelable: AnyCancellable?
     var comic: Comic? { didSet {
         refreshViews()
     }}
+    var favouriteComic: FavouriteComic? { didSet {
+        reloadCoreData()
+    }}
     var isLiked: Bool? { didSet {
         setupFavouriteButton()
     }}
     
-    init(coordinator: MainCoordinator, viewModel: BrowseViewModel) {
+    init(coordinator: MainCoordinator, viewModel: ComicViewModel) {
         self.coordinator = coordinator
-        self.browseViewModel = viewModel
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,15 +48,15 @@ class BrowseVC: UIViewController {
         bindViewModel()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("appear")
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.loadFromFavourites()
         refreshFavouriteButton()
         refreshButtonState()
     }
     
     func setupViews() {
         Task {
-            await browseViewModel.getLatestComic()
+            await viewModel.getLatestComic()
             setupHeaderLabels()
             setupNavigationButtons()
             setupFavouriteButton()
@@ -62,9 +65,17 @@ class BrowseVC: UIViewController {
     }
     
     func bindViewModel() {
-        cancelable = browseViewModel.$comic
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.comic, on: self)
+        if let browseViewModel = viewModel as? BrowseViewModel {
+            cancelable = browseViewModel.$comic
+                .receive(on: DispatchQueue.main)
+                .assign(to: \.comic, on: self)
+        } else if let favouritesViewModel = viewModel as? FavouritesViewModel {
+            cancelable = favouritesViewModel.$comic
+                .receive(on: DispatchQueue.main)
+                .assign(to: \.favouriteComic, on: self)
+        }
+    }
+    
     func setupHeaderLabels() {
         comicTitle.text = viewModel.setComicTitle()
         comicNum.text = viewModel.setComicNum()
@@ -119,10 +130,14 @@ class BrowseVC: UIViewController {
     }
     
     func refreshViews() {
-        comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
+        comicImageView.kf.setImage(with: self.viewModel.comicImageURL())
         setupHeaderLabels()
         refreshFavouriteButton()
         refreshButtonState()
+    }
+    
+    func reloadCoreData() {
+        comicImageView.image = viewModel.comicImage()
         setupHeaderLabels()
         refreshFavouriteButton()
     }
