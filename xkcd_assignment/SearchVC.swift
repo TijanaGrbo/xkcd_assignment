@@ -56,7 +56,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     }
     
     func setupSlider() {
-        sliderView.minimumValue = 0
+        sliderView.minimumValue = 1
         sliderView.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
         sliderView.maximumValue = Float(searchViewModel.latestComicNum ?? 0)
         sliderView.value = sliderView.maximumValue
