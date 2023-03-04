@@ -104,7 +104,7 @@ class BrowseVC: UIViewController {
     func setupShareButton() {
         shareButton.setImage(UIImage(systemName: "square.and.arrow.up.fill"), for: .normal)
         shareButton.setTitle("", for: .normal)
-        shareButton.tintColor = UIColor(.primary)
+        shareButton.tintColor = UIColor(.black)
     }
     
     func setupFavouriteButton() {
