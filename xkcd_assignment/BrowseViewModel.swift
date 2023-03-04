@@ -48,6 +48,10 @@ extension BrowseViewModel {
         return comic?.imgURL
     }
     
+    func loadFromFavourites() {
+        _ = storageProvider.getFavouriteComics()
+    }
+    
     func setComicTitle() -> String {
         guard let comicTitle = comic?.title else { return "" }
         return comicTitle
@@ -64,8 +68,13 @@ extension BrowseViewModel {
         loadFromFavourites()
     }
     
-    func loadFromFavourites() {
-        _ = storageProvider.getFavouriteComics()
+    func checkIfLiked() -> Bool {
+        guard let comicNum = comic?.num else { return false }
+        if storageProvider.isFavourite(comicNum: comicNum) {
+            return true
+        } else {
+            return false
+        }
     }
     
     func favouriteButtonTapped(comicImage: UIImage) {
@@ -77,16 +86,9 @@ extension BrowseViewModel {
             storageProvider.saveComicToFavourites(comic, withImage: comicImage)
         }
     }
-    
-    func checkIfLiked() -> Bool {
-        guard let comicNum = comic?.num else { return false }
-        if storageProvider.isFavourite(comicNum: comicNum) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
+}
+
+extension BrowseViewModel {
     func getPreviousButtonState() -> Bool {
         guard let currentComicNum = comic?.num else { return false }
         return currentComicNum > 1
