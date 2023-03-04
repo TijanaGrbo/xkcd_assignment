@@ -39,4 +39,10 @@ class MainCoordinator {
         
         navController.pushViewController(tabBar, animated: true)
     }
+    
+    func shareComic(_ url: URL) {
+        let shareViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        navController.present(shareViewController, animated: true, completion: nil)
+    }
+
 }
