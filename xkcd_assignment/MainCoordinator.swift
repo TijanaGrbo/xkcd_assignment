@@ -20,14 +20,14 @@ class MainCoordinator {
         let browseVM = BrowseViewModel(storageProvider: storageProvider)
         let browseVC = BrowseVC(coordinator: self, viewModel: browseVM)
         
-        let favouritesVM = BrowseViewModel(storageProvider: storageProvider)
-        let fabouritesVC = BrowseVC(coordinator: self, viewModel: favouritesVM)
+        let favouritesVM = FavouritesViewModel(storageProvider: storageProvider)
+        let favouritesVC = BrowseVC(coordinator: self, viewModel: favouritesVM)
         
         let searchVM = SearchViewModel()
         let searchVC = SearchVC(searchViewModel: searchVM)
         
         let tabBar = TabBarVC()
-        tabBar.viewControllers = [browseVC, fabouritesVC, searchVC]
+        tabBar.viewControllers = [browseVC, favouritesVC, searchVC]
         tabBar.tabBar.items?[0].title = "Browse"
         tabBar.tabBar.items?[1].title = "Favourites"
         tabBar.tabBar.items?[2].title = "Search"
