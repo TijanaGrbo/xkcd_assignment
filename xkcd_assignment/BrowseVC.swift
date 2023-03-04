@@ -134,12 +134,37 @@ class BrowseVC: UIViewController {
         setupHeaderLabels()
         refreshFavouriteButton()
         refreshButtonState()
+        configureAccessibility()
     }
     
     func reloadCoreData() {
         comicImageView.image = viewModel.comicImage()
         setupHeaderLabels()
         refreshFavouriteButton()
+    }
+    
+    func configureAccessibility() {
+        guard let comic = comic else { return }
+        comicTitle.isAccessibilityElement = true
+        comicTitle.accessibilityLabel = "Comic title: \(comic.title)"
+        
+        comicNum.isAccessibilityElement = true
+        comicNum.accessibilityLabel = "Comic number: \(comic.num)"
+        
+        comicImageView.isAccessibilityElement = true
+        comicImageView.accessibilityLabel = comic.alt
+        
+        previousButton.isAccessibilityElement = true
+        previousButton.accessibilityLabel = "\(viewModel.getPreviousButtonState() ? "Show previous comic" : "")"
+        
+        latestButton.isAccessibilityElement = true
+        latestButton.accessibilityLabel = "\(viewModel.getLatestButtonState() ? "Show latest comic" : "")"
+        
+        nextButton.isAccessibilityElement = true
+        nextButton.accessibilityLabel = "\(viewModel.getNextButtonState() ? "Show next comic" : "")"
+        
+        favouriteButton.isAccessibilityElement = true
+        favouriteButton.accessibilityLabel = "\(viewModel.checkIfLiked() ? "Favourite" : "Not favourite"), double tap to \(viewModel.checkIfLiked() ? "remove from" : "add to") favourites"
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
@@ -167,5 +192,6 @@ class BrowseVC: UIViewController {
         guard let comicImage = comicImageView.image else { return }
         viewModel.favouriteButtonTapped(comicImage: comicImage)
         refreshFavouriteButton()
+        configureAccessibility()
     }
 }

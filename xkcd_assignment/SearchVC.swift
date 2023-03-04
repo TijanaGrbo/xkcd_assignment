@@ -46,6 +46,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
             setupSlider()
             setupComicNumLabel()
             setupTitle()
+            configureAccessibility()
         }
     }
     
@@ -76,6 +77,18 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     func refreshViews() {
         comicImageView.kf.setImage(with: comic?.imgURL)
         setupTitle()
+    }
+    
+    func configureAccessibility() {
+        guard let comic = comic else { return }
+        comicNameLabel.isAccessibilityElement = true
+        comicNameLabel.accessibilityLabel = "Comic title: \(comic.title)"
+        
+        comicNumLabel.isAccessibilityElement = true
+        comicNumLabel.accessibilityLabel = "Comic number"
+        
+        comicImageView.isAccessibilityElement = true
+        comicImageView.accessibilityLabel = comic.alt
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
