@@ -32,6 +32,7 @@
 		E6F4C56729B3AE0E00EDCF1B /* xkcd_assignment_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F4C56629B3AE0E00EDCF1B /* xkcd_assignment_UITests.swift */; };
 		E6F4C57329B3AE8E00EDCF1B /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F4C57229B3AE8E00EDCF1B /* AccessibilityIdentifiers.swift */; };
 		E6F4C57429B3B25300EDCF1B /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F4C57229B3AE8E00EDCF1B /* AccessibilityIdentifiers.swift */; };
+		E6F4C57829B3F52900EDCF1B /* UIColor+ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F4C57729B3F52900EDCF1B /* UIColor+ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E6F4C56429B3AE0E00EDCF1B /* xkcd_assignment_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xkcd_assignment_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F4C56629B3AE0E00EDCF1B /* xkcd_assignment_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xkcd_assignment_UITests.swift; sourceTree = "<group>"; };
 		E6F4C57229B3AE8E00EDCF1B /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
+		E6F4C57729B3F52900EDCF1B /* UIColor+ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				E673D11829AF7AB100F2CF69 /* AppDelegate.swift */,
 				E673D11A29AF7AB100F2CF69 /* SceneDelegate.swift */,
 				E673D12C29AFA31400F2CF69 /* MainCoordinator.swift */,
+				E6F4C55A29B2A19F00EDCF1B /* ComicViewModelProtocol.swift */,
 				E673D13D29B0CD5A00F2CF69 /* TabBarVC.xib */,
 				E673D13F29B0CD9C00F2CF69 /* TabBarVC.swift */,
 				E673D13829AFC41400F2CF69 /* BrowseViewModel.swift */,
@@ -127,7 +130,7 @@
 				E673D13629AFBED500F2CF69 /* BrowseVC.xib */,
 				E673D15529B111F300F2CF69 /* SearchViewModel.swift */,
 				E673D15329B111C100F2CF69 /* SearchVC.swift */,
-				E6F4C55A29B2A19F00EDCF1B /* ComicViewModelProtocol.swift */,
+				E6F4C57729B3F52900EDCF1B /* UIColor+ex.swift */,
 				E673D15129B10D5F00F2CF69 /* SearchVC.xib */,
 				E673D13029AFA8F200F2CF69 /* Comic.swift */,
 				E673D14429B0D9B200F2CF69 /* xkcd.xcdatamodeld */,
@@ -274,6 +277,7 @@
 				E673D13929AFC41400F2CF69 /* BrowseViewModel.swift in Sources */,
 				E673D13329AFAC0F00F2CF69 /* Networking.swift in Sources */,
 				E673D14829B0DBC500F2CF69 /* ImageTransformer.swift in Sources */,
+				E6F4C57829B3F52900EDCF1B /* UIColor+ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
