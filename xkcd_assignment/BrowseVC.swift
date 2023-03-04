@@ -47,12 +47,15 @@ class BrowseVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         print("appear")
+        refreshFavouriteButton()
+        refreshButtonState()
     }
     
     func setupViews() {
         Task {
             await browseViewModel.getLatestComic()
             setupHeaderLabels()
+            setupNavigationButtons()
             setupFavouriteButton()
             refreshViews()
         }
@@ -74,37 +77,80 @@ class BrowseVC: UIViewController {
     }
     
     func refreshFavouriteButton() {
-        favouriteButton.tintColor = UIColor(browseViewModel.checkIfLiked() ? .red : .blue)
+        favouriteButton.tintColor = UIColor(viewModel.checkIfLiked() ? .red : .black)
+    }
+    
+    func setupNavigationButtons() {
+        let prevNextonfiguration = UIImage.SymbolConfiguration(textStyle: .title2)
+        let latestButtonConfiguration = UIImage.SymbolConfiguration(textStyle: .body)
+        
+        let previousButtonImage = UIImage(systemName: "arrowtriangle.backward.fill", withConfiguration: prevNextonfiguration)
+        let latestButtonImage = UIImage(systemName: "diamond.fill", withConfiguration: latestButtonConfiguration)
+        let nextButtonImage = UIImage(systemName: "arrowtriangle.forward.fill", withConfiguration: prevNextonfiguration)
+        
+        previousButton.isEnabled = viewModel.getPreviousButtonState()
+        latestButton.isEnabled = viewModel.getLatestButtonState()
+        nextButton.isEnabled = viewModel.getNextButtonState()
+        
+        #warning("forEach")
+        previousButton.setTitle("", for: .normal)
+        latestButton.setTitle("", for: .normal)
+        nextButton.setTitle("", for: .normal)
+        
+        #warning("forEach")
+        previousButton.tintColor = .black.withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.5)
+        latestButton.tintColor = .black.withAlphaComponent(viewModel.getLatestButtonState() ? 1.0 : 0.5)
+        nextButton.tintColor = .black.withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.5)
+        
+        previousButton.setImage(previousButtonImage, for: .normal)
+        latestButton.setImage(latestButtonImage, for: .normal)
+        nextButton.setImage(nextButtonImage, for: .normal)
+    }
+    
+    func refreshButtonState() {
+        previousButton.isEnabled = viewModel.getPreviousButtonState()
+        latestButton.isEnabled = viewModel.getLatestButtonState()
+        nextButton.isEnabled = viewModel.getNextButtonState()
+        
+        #warning("forEach")
+        previousButton.tintColor = .black.withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.6)
+        latestButton.tintColor = .black.withAlphaComponent(viewModel.getLatestButtonState() ? 1.0 : 0.6)
+        nextButton.tintColor = .black.withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.6)
     }
     
     func refreshViews() {
         comicImageView.kf.setImage(with: self.browseViewModel.comic?.imgURL)
         setupHeaderLabels()
+        refreshFavouriteButton()
+        refreshButtonState()
         setupHeaderLabels()
         refreshFavouriteButton()
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
         Task {
-            await browseViewModel.getPreviousComic()
+            await viewModel.getPreviousComic()
+            refreshButtonState()
         }
     }
     
     @IBAction func latestButtonTapped(_ sender: Any) {
         Task {
-            await browseViewModel.getLatestComic()
+            await viewModel.getLatestComic()
+            refreshButtonState()
         }
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         Task {
-            await browseViewModel.getNextComic()
+            await viewModel.getNextComic()
+            refreshButtonState()
         }
     }
     
     @IBAction func favouriteButtonTapped(_ sender: Any) {
         guard let comicImage = comicImageView.image else { return }
-        browseViewModel.favouriteButtonTapped(comicImage: comicImage)
+        viewModel.favouriteButtonTapped(comicImage: comicImage)
         refreshFavouriteButton()
     }
 }
