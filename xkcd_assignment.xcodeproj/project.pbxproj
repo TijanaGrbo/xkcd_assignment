@@ -27,6 +27,8 @@
 		E673D15229B10D5F00F2CF69 /* SearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E673D15129B10D5F00F2CF69 /* SearchVC.xib */; };
 		E673D15429B111C100F2CF69 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D15329B111C100F2CF69 /* SearchVC.swift */; };
 		E673D15629B111F300F2CF69 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D15529B111F300F2CF69 /* SearchViewModel.swift */; };
+		E6F4C55929B28E2D00EDCF1B /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F4C55829B28E2D00EDCF1B /* FavouritesViewModel.swift */; };
+		E6F4C55B29B2A19F00EDCF1B /* ComicViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F4C55A29B2A19F00EDCF1B /* ComicViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		E673D15129B10D5F00F2CF69 /* SearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchVC.xib; sourceTree = "<group>"; };
 		E673D15329B111C100F2CF69 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		E673D15529B111F300F2CF69 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		E6F4C55829B28E2D00EDCF1B /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		E6F4C55A29B2A19F00EDCF1B /* ComicViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +96,12 @@
 				E673D13D29B0CD5A00F2CF69 /* TabBarVC.xib */,
 				E673D13F29B0CD9C00F2CF69 /* TabBarVC.swift */,
 				E673D13829AFC41400F2CF69 /* BrowseViewModel.swift */,
+				E6F4C55829B28E2D00EDCF1B /* FavouritesViewModel.swift */,
 				E673D12E29AFA3A000F2CF69 /* BrowseVC.swift */,
 				E673D13629AFBED500F2CF69 /* BrowseVC.xib */,
 				E673D15529B111F300F2CF69 /* SearchViewModel.swift */,
 				E673D15329B111C100F2CF69 /* SearchVC.swift */,
+				E6F4C55A29B2A19F00EDCF1B /* ComicViewModelProtocol.swift */,
 				E673D15129B10D5F00F2CF69 /* SearchVC.xib */,
 				E673D13029AFA8F200F2CF69 /* Comic.swift */,
 				E673D14429B0D9B200F2CF69 /* xkcd.xcdatamodeld */,
@@ -188,12 +194,14 @@
 			files = (
 				E673D13129AFA8F200F2CF69 /* Comic.swift in Sources */,
 				E673D12F29AFA3A000F2CF69 /* BrowseVC.swift in Sources */,
+				E6F4C55B29B2A19F00EDCF1B /* ComicViewModelProtocol.swift in Sources */,
 				E673D12D29AFA31400F2CF69 /* MainCoordinator.swift in Sources */,
 				E65E014329B1570C00D6015C /* FavouriteComic+CoreDataClass.swift in Sources */,
 				E673D14A29B0DC6A00F2CF69 /* StorageProvider.swift in Sources */,
 				E673D14029B0CD9C00F2CF69 /* TabBarVC.swift in Sources */,
 				E673D14629B0D9B200F2CF69 /* xkcd.xcdatamodeld in Sources */,
 				E673D15629B111F300F2CF69 /* SearchViewModel.swift in Sources */,
+				E6F4C55929B28E2D00EDCF1B /* FavouritesViewModel.swift in Sources */,
 				E673D15429B111C100F2CF69 /* SearchVC.swift in Sources */,
 				E65E014429B1570C00D6015C /* FavouriteComic+CoreDataProperties.swift in Sources */,
 				E673D11929AF7AB100F2CF69 /* AppDelegate.swift in Sources */,
