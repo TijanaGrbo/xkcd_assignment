@@ -71,6 +71,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     }
     
     func setupSlider() {
+        sliderView.tintColor = .purple
         sliderView.minimumValue = 1
         sliderView.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         sliderView.maximumValue = Float(searchViewModel.latestComicNum ?? 0)
@@ -81,6 +82,9 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     func setupComicNumLabel() {
         comicNumLabel.addTarget(self, action: #selector(comicNumValueChanged), for: .allEditingEvents)
         comicNumLabel.text = String(Int(sliderView.value))
+        comicNumLabel.textAlignment = .center
+        comicNumLabel.font = .monospacedSystemFont(ofSize: 18, weight: .bold)
+        comicNumLabel.backgroundColor = .purple.withAlphaComponent(0.2)
         comicNumValueChanged(comicNumLabel)
     }
     

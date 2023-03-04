@@ -44,5 +44,11 @@ class MainCoordinator {
         let shareViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         navController.present(shareViewController, animated: true, completion: nil)
     }
+    
+    func showDetail(title: String, description: String) {
+        let vc = ComicDetailVC(title: title,
+                               description: description)
+        navController.present(vc, animated: true)
+    }
 
 }

@@ -59,6 +59,7 @@ class BrowseVC: UIViewController {
         Task {
             await viewModel.getLatestComic()
             setupBackground()
+            setupImage()
             setupNavigationButtons()
             setupAccessibilityIdentifiers()
             setupShareButton()
@@ -89,8 +90,14 @@ class BrowseVC: UIViewController {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         view.layer.insertSublayer(gradientLayer, at: 0)
-        
+    }
+    
+    func setupImage() {
         comicImageView.layer.compositingFilter = "multiplyBlendMode"
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        comicImageView.isUserInteractionEnabled = true
+        comicImageView.addGestureRecognizer(tapGesture)
+
     }
     
     func setupHeaderLabels() {
@@ -115,18 +122,11 @@ class BrowseVC: UIViewController {
     }
     
     func setupNavigationButtons() {
-        let prevNextonfiguration = UIImage.SymbolConfiguration(textStyle: .title2)
-        let latestButtonConfiguration = UIImage.SymbolConfiguration(textStyle: .body)
-        
-        let previousButtonImage = UIImage(systemName: "arrowtriangle.backward.fill", withConfiguration: prevNextonfiguration)
-        let latestButtonImage = UIImage(systemName: "diamond.fill", withConfiguration: latestButtonConfiguration)
-        let nextButtonImage = UIImage(systemName: "arrowtriangle.forward.fill", withConfiguration: prevNextonfiguration)
+        previousButton.setTitle("previous", for: .normal)
+        latestButton.setTitle("latest", for: .normal)
+        nextButton.setTitle("next", for: .normal)
         
         refreshButtonState()
-        
-        previousButton.setImage(previousButtonImage, for: .normal)
-        latestButton.setImage(latestButtonImage, for: .normal)
-        nextButton.setImage(nextButtonImage, for: .normal)
     }
     
     func refreshButtonState() {
@@ -151,6 +151,11 @@ class BrowseVC: UIViewController {
         comicImageView.image = viewModel.comicImage()
         setupHeaderLabels()
         refreshFavouriteButton()
+    }
+    
+    @objc func imageTapped() {
+        coordinator.showDetail(title: comic?.title ?? "",
+                               description: comic?.alt ?? "")
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
