@@ -27,10 +27,10 @@ class BrowseVC: UIViewController {
         refreshViews()
     }}
     var favouriteComic: FavouriteComic? { didSet {
-        reloadCoreData()
+        reloadFavourites()
     }}
     var isLiked: Bool? { didSet {
-        setupFavouriteButton()
+        refreshFavouriteButton()
     }}
     
     init(coordinator: MainCoordinator, viewModel: ComicViewModel) {
@@ -59,7 +59,6 @@ class BrowseVC: UIViewController {
         Task {
             await viewModel.getLatestComic()
             setupBackground()
-            setupHeaderLabels()
             setupNavigationButtons()
             setupAccessibilityIdentifiers()
             setupShareButton()
@@ -103,13 +102,11 @@ class BrowseVC: UIViewController {
     
     func setupShareButton() {
         shareButton.setImage(UIImage(systemName: "square.and.arrow.up.fill"), for: .normal)
-        shareButton.setTitle("", for: .normal)
         shareButton.tintColor = UIColor(.black)
     }
     
     func setupFavouriteButton() {
         favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        favouriteButton.setTitle("", for: .normal)
         refreshFavouriteButton()
     }
     
@@ -125,39 +122,18 @@ class BrowseVC: UIViewController {
         let latestButtonImage = UIImage(systemName: "diamond.fill", withConfiguration: latestButtonConfiguration)
         let nextButtonImage = UIImage(systemName: "arrowtriangle.forward.fill", withConfiguration: prevNextonfiguration)
         
-        previousButton.isEnabled = viewModel.getPreviousButtonState()
-        latestButton.isEnabled = viewModel.getLatestButtonState()
-        nextButton.isEnabled = viewModel.getNextButtonState()
-        
-        #warning("forEach")
-        previousButton.setTitle("", for: .normal)
-        latestButton.setTitle("", for: .normal)
-        nextButton.setTitle("", for: .normal)
-        
-        #warning("forEach")
-        previousButton.tintColor = UIColor(.primary).withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.8)
-        latestButton.tintColor = UIColor(.primary).withAlphaComponent(viewModel.getLatestButtonState() ? 1.0 : 0.8)
-        nextButton.tintColor = UIColor(.primary).withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.8)
+        refreshButtonState()
         
         previousButton.setImage(previousButtonImage, for: .normal)
         latestButton.setImage(latestButtonImage, for: .normal)
         nextButton.setImage(nextButtonImage, for: .normal)
     }
     
-    func setupAccessibilityIdentifiers() {
-        comicNum.accessibilityIdentifier = AccessibilityIdentifier.comicNum.rawValue
-        nextButton.accessibilityIdentifier = AccessibilityIdentifier.nextButton.rawValue
-        previousButton.accessibilityIdentifier = AccessibilityIdentifier.prevButton.rawValue
-        latestButton.accessibilityIdentifier = AccessibilityIdentifier.latestButton.rawValue
-        comicImageView.accessibilityIdentifier = "\(comic?.num ?? 0)"
-    }
-    
     func refreshButtonState() {
         previousButton.isEnabled = viewModel.getPreviousButtonState()
         latestButton.isEnabled = viewModel.getLatestButtonState()
         nextButton.isEnabled = viewModel.getNextButtonState()
-        
-        #warning("forEach")
+
         previousButton.tintColor = .black.withAlphaComponent(viewModel.getPreviousButtonState() ? 1.0 : 0.6)
         latestButton.tintColor = .black.withAlphaComponent(viewModel.getLatestButtonState() ? 1.0 : 0.6)
         nextButton.tintColor = .black.withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.6)
@@ -171,34 +147,10 @@ class BrowseVC: UIViewController {
         configureAccessibility()
     }
     
-    func reloadCoreData() {
+    func reloadFavourites() {
         comicImageView.image = viewModel.comicImage()
         setupHeaderLabels()
         refreshFavouriteButton()
-    }
-    
-    func configureAccessibility() {
-        guard let comic = comic else { return }
-        comicTitle.isAccessibilityElement = true
-        comicTitle.accessibilityLabel = "Comic title: \(comic.title)"
-        
-        comicNum.isAccessibilityElement = true
-        comicNum.accessibilityLabel = "Comic number: \(comic.num)"
-        
-        comicImageView.isAccessibilityElement = true
-        comicImageView.accessibilityLabel = comic.alt
-        
-        previousButton.isAccessibilityElement = true
-        previousButton.accessibilityLabel = "\(viewModel.getPreviousButtonState() ? "Show previous comic" : "")"
-        
-        latestButton.isAccessibilityElement = true
-        latestButton.accessibilityLabel = "\(viewModel.getLatestButtonState() ? "Show latest comic" : "")"
-        
-        nextButton.isAccessibilityElement = true
-        nextButton.accessibilityLabel = "\(viewModel.getNextButtonState() ? "Show next comic" : "")"
-        
-        favouriteButton.isAccessibilityElement = true
-        favouriteButton.accessibilityLabel = "\(viewModel.checkIfLiked() ? "Favourite" : "Not favourite"), double tap to \(viewModel.checkIfLiked() ? "remove from" : "add to") favourites"
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
@@ -232,5 +184,39 @@ class BrowseVC: UIViewController {
     @IBAction func shareButtonTapped(_ sender: Any) {
         guard let imageURL = comic?.imgURL else { return }
         coordinator.shareComic(imageURL)
+    }
+}
+
+extension BrowseVC {
+    func setupAccessibilityIdentifiers() {
+        comicNum.accessibilityIdentifier = AccessibilityIdentifier.comicNum.rawValue
+        nextButton.accessibilityIdentifier = AccessibilityIdentifier.nextButton.rawValue
+        previousButton.accessibilityIdentifier = AccessibilityIdentifier.prevButton.rawValue
+        latestButton.accessibilityIdentifier = AccessibilityIdentifier.latestButton.rawValue
+        comicImageView.accessibilityIdentifier = "\(comic?.num ?? 0)"
+    }
+    
+    func configureAccessibility() {
+        guard let comic = comic else { return }
+        comicTitle.isAccessibilityElement = true
+        comicTitle.accessibilityLabel = "Comic title: \(comic.title)"
+        
+        comicNum.isAccessibilityElement = true
+        comicNum.accessibilityLabel = "Comic number: \(comic.num)"
+        
+        comicImageView.isAccessibilityElement = true
+        comicImageView.accessibilityLabel = comic.alt
+        
+        previousButton.isAccessibilityElement = true
+        previousButton.accessibilityLabel = "\(viewModel.getPreviousButtonState() ? "Show previous comic" : "")"
+        
+        latestButton.isAccessibilityElement = true
+        latestButton.accessibilityLabel = "\(viewModel.getLatestButtonState() ? "Show latest comic" : "")"
+        
+        nextButton.isAccessibilityElement = true
+        nextButton.accessibilityLabel = "\(viewModel.getNextButtonState() ? "Show next comic" : "")"
+        
+        favouriteButton.isAccessibilityElement = true
+        favouriteButton.accessibilityLabel = "\(viewModel.checkIfLiked() ? "Favourite" : "Not favourite"), double tap to \(viewModel.checkIfLiked() ? "remove from" : "add to") favourites"
     }
 }
