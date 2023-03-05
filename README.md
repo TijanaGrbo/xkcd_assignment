@@ -40,15 +40,15 @@ I've used the combination of MVVM and Coordinator pattern with .xib files. MVVM 
 
 ### 🧭 Navigation: Coordinator pattern
 
-Coordinator pattern is a convenient way to add the missing navigation layer when the Storyboard is omitted from the project, but it's also easy to edit and maintain. It helps in separating navigation logic from the view controllers and makes the code more modular and testable.
+Coordinator pattern is a convenient way to add the missing navigation layer when the Storyboard is omitted from the project, but it's also easy to edit and maintain. It keeps the navigation logic separate from the view controllers and makes the code more modular and testable.
 
 ### 📱 UI: .xib + programmatic
 
-Even though Storyboards and .xib files have similar drawbacks (clunky, impossible to resolve conflicts if two people edit the same file), .xib files are reusable, which makes the code more modular, but also easier to maintain because they're smaller and don't control the navigation. It might be worth noting that I would only use programmatic approach without .xibs on a bigger project with other collaborators.
+Even though Storyboards and .xib files have similar drawbacks (clunky, potentially impossible to resolve conflicts if two people edit the same file), .xib files are reusable, which makes the code more modular, but also easier to maintain because they're smaller and don't control the navigation. It might be worth noting that I would only use programmatic approach without .xibs on a bigger project with other collaborators.
 
 ### 🪢 Data Binding: Combine
 
-Data binding would have been a pain point if I didn't use just right amount of combine to bind @Published properties from ViewModels to ViewController properties.
+Data binding would have been a pain point if I didn't use just right amount of Combine to bind @Published properties from ViewModels to ViewController properties.
 
 ### 🧩 Modularity: Protocols
 
