@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrowseVC" customModule="xkcd_assignment" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComicViewerVC" customModule="xkcd_assignment" customModuleProvider="target">
             <connections>
                 <outlet property="comicImageView" destination="2hK-j3-OYi" id="yLC-z8-3z3"/>
                 <outlet property="comicNum" destination="cvf-Jc-qos" id="SI6-AN-jYN"/>
@@ -28,16 +28,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmI-DC-frO" userLabel="No Data Message">
-                    <rect key="frame" x="196.66666666666666" y="438.66666666666669" width="0.0" height="0.0"/>
+                    <rect key="frame" x="196.66666666666666" y="426" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2hK-j3-OYi">
-                    <rect key="frame" x="0.0" y="135" width="393" height="563"/>
+                    <rect key="frame" x="0.0" y="76" width="393" height="656"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0h-4X-Xnc">
-                    <rect key="frame" x="8" y="706" width="48" height="48"/>
+                    <rect key="frame" x="8" y="740" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="62j-Dj-LMF"/>
                         <constraint firstAttribute="width" secondItem="W0h-4X-Xnc" secondAttribute="height" multiplier="1:1" id="LcZ-PU-f9s"/>
@@ -49,7 +49,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yB-tn-BBR">
-                    <rect key="frame" x="7.9999999999999929" y="762" width="120.33333333333331" height="56"/>
+                    <rect key="frame" x="7.9999999999999929" y="796" width="120.33333333333331" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="QIP-xC-zKg"/>
                     </constraints>
@@ -60,7 +60,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoc-VG-tFv">
-                    <rect key="frame" x="264.66666666666669" y="762" width="120.33333333333331" height="56"/>
+                    <rect key="frame" x="264.66666666666669" y="796" width="120.33333333333331" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="w9x-a0-XlF"/>
                     </constraints>
@@ -71,7 +71,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhS-qn-dYb">
-                    <rect key="frame" x="136.33333333333334" y="762" width="120.33333333333334" height="56"/>
+                    <rect key="frame" x="136.33333333333334" y="796" width="120.33333333333334" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="hc1-EO-Umr"/>
                     </constraints>
@@ -82,7 +82,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRP-ch-0zf">
-                    <rect key="frame" x="337" y="706" width="48" height="48"/>
+                    <rect key="frame" x="337" y="740" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="Xca-WN-IBB"/>
                         <constraint firstAttribute="width" secondItem="xRP-ch-0zf" secondAttribute="height" multiplier="1:1" id="ddh-hq-Pkc"/>
@@ -94,7 +94,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ComicTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ0-I0-XfJ">
-                    <rect key="frame" x="16" y="59" width="377" height="28"/>
+                    <rect key="frame" x="16" y="0.0" width="377" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="0Yr-JV-6y3"/>
                     </constraints>
@@ -103,7 +103,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ComicNum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvf-Jc-qos">
-                    <rect key="frame" x="16" y="95" width="377" height="24"/>
+                    <rect key="frame" x="16" y="36" width="377" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="14H-hX-UOV"/>
                     </constraints>

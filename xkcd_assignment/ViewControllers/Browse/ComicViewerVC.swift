@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class BrowseVC: UIViewController {
+final class ComicViewerVC: UIViewController {
     
     @IBOutlet weak var comicImageView: UIImageView!
     @IBOutlet weak var previousButton: UIButton!
@@ -82,7 +82,7 @@ final class BrowseVC: UIViewController {
 }
 
 // private action helpers
-private extension BrowseVC {
+private extension ComicViewerVC {
     func navigateToPrevious() {
         Task {
             await viewModel.getPreviousComic()
@@ -106,7 +106,7 @@ private extension BrowseVC {
 }
 
 // Private helpers
-private extension BrowseVC {
+private extension ComicViewerVC {
     func setupViews() {
         Task {
             await viewModel.getLatestComic()

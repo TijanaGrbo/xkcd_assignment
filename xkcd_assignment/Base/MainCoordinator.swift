@@ -18,10 +18,10 @@ final class MainCoordinator {
     
     func start() {
         let browseVM = BrowseViewModel(storageProvider: storageProvider)
-        let browseVC = BrowseVC(coordinator: self, viewModel: browseVM)
+        let browseVC = ComicViewerVC(coordinator: self, viewModel: browseVM)
         
         let favouritesVM = FavouritesViewModel(storageProvider: storageProvider)
-        let favouritesVC = BrowseVC(coordinator: self, viewModel: favouritesVM)
+        let favouritesVC = ComicViewerVC(coordinator: self, viewModel: favouritesVM)
         
         let searchVM = SearchViewModel()
         let searchVC = SearchVC(coordinator: self, searchViewModel: searchVM)
