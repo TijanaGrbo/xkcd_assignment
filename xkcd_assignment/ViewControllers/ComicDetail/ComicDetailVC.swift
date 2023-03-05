@@ -11,13 +11,16 @@ class ComicDetailVC: UIViewController {
     
     @IBOutlet weak var comicDescriptionTitleLabel: UILabel!
     @IBOutlet weak var comicDetailLabel: UILabel!
+    @IBOutlet weak var explanationButton: UIButton!
     
     let comicTitle: String
     let detailLabelString: String
+    let url: URL?
     
-    init(title: String, description: String) {
+    init(title: String, description: String, url: URL?) {
         self.comicTitle = title
         self.detailLabelString = description
+        self.url = url
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,6 +41,9 @@ class ComicDetailVC: UIViewController {
         comicDetailLabel.textColor = .black
         comicDescriptionTitleLabel.textColor = .black
         
+        explanationButton.setTitle("explanation".localized(), for: .normal)
+        explanationButton.tintColor = .black
+        
         comicDescriptionTitleLabel.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicDetailLabel.font = .monospacedDigitSystemFont(ofSize: 16, weight: .semibold)
     }
@@ -52,6 +58,11 @@ class ComicDetailVC: UIViewController {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    @IBAction func explanationButtonTapped(_ sender: Any) {
+        guard let url = url else { return }
+        UIApplication.shared.open(url)
     }
     
 }

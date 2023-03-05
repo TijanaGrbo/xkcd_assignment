@@ -122,7 +122,8 @@ private extension SearchVC {
     
     @objc func imageTapped() {
         coordinator.showDetail(title: viewModel.getComicTitle(),
-                               description: viewModel.getComicDescription())
+                               description: viewModel.getComicDescription(),
+                               url: viewModel.getExplanationUrl())
     }
 }
 

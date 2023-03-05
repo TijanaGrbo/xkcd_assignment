@@ -97,6 +97,11 @@ extension FavouritesViewModel {
         return URL(string: imageUrlString)
     }
     
+    func getExplanationUrl() -> URL? {
+        guard let comicNum = comic?.num, let title = comic?.title else { return nil }
+        return title.formatExplanationUrl(withComicNum: Int(comicNum))
+    }
+    
     func hasComic() -> Bool {
         return comic != nil
     }

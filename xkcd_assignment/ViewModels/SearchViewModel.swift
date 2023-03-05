@@ -29,4 +29,9 @@ class SearchViewModel {
         guard let comicDescription = comic?.alt else { return "" }
         return comicDescription
     }
+    
+    func getExplanationUrl() -> URL? {
+        guard let comicNum = comic?.num, let title = comic?.title else { return nil }
+        return title.formatExplanationUrl(withComicNum: comicNum)
+    }
 }
