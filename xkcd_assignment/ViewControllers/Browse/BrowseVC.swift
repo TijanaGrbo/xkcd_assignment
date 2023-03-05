@@ -55,11 +55,6 @@ final class BrowseVC: UIViewController {
         refreshButtonState()
     }
     
-    @objc func imageTapped() {
-        coordinator.showDetail(title: comic?.title ?? "",
-                               description: comic?.alt ?? "")
-    }
-    
     @IBAction func previousButtonTapped(_ sender: Any) {
         Task {
             await viewModel.getPreviousComic()
@@ -137,7 +132,6 @@ private extension BrowseVC {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         comicImageView.isUserInteractionEnabled = true
         comicImageView.addGestureRecognizer(tapGesture)
-
     }
     
     private func setupHeaderLabels() {
@@ -225,5 +219,10 @@ private extension BrowseVC {
         
         favouriteButton.isAccessibilityElement = true
         favouriteButton.accessibilityLabel = "\(viewModel.checkIfLiked() ? "Favourite" : "Not favourite"), double tap to \(viewModel.checkIfLiked() ? "remove from" : "add to") favourites"
+    }
+    
+    @objc private func imageTapped() {
+        coordinator.showDetail(title: comic?.title ?? "",
+                               description: comic?.alt ?? "")
     }
 }
