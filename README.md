@@ -3,11 +3,10 @@ xkcd comic browser
 
 ## 🖌️ Application
 
-![Image](https://user-images.githubusercontent.com/39621438/222983170-c84d0439-2bf5-4274-8c06-806a5e7986ce.png)
-![Image](https://user-images.githubusercontent.com/39621438/222983165-f0f2ee0c-2fb1-4869-ab17-de5e48aada94.png)
-![Image](https://user-images.githubusercontent.com/39621438/222983167-ee56f191-90d4-49ff-9f49-288ceef7b14c.png)
-![Image](https://user-images.githubusercontent.com/39621438/222983169-1b13767a-3267-4382-a76a-3c56a51df55a.png)
-![Image](https://user-images.githubusercontent.com/39621438/222983166-403b4510-882a-4165-bb10-43fbfd0733d7.png)
+![Image](https://user-images.githubusercontent.com/39621438/222987005-13105c0e-a564-41a6-bf82-bf29e2332f44.png)
+![Image](https://user-images.githubusercontent.com/39621438/222987003-bcec91c4-07bd-4b85-90e6-2a4fb26710f4.png)
+![Image](https://user-images.githubusercontent.com/39621438/222987004-e650cae2-2df9-4d8b-b1f3-c4a4fa15d9d7.png)
+![Image](https://user-images.githubusercontent.com/39621438/222987002-2765bd3a-69e9-46a4-99b6-11382c77990c.png)
 
 ## ⚙️ Functionalities
 
@@ -67,6 +66,11 @@ XCTest provided an essential foundation for UI testing. I've written some simple
 
 I've used accessibility labels and hints to configure buttons and labels and enable alt text for images.
 
+### 🍰 Extra: Localization
+
+Currently supporting English, Serbian and Norwegian.
+
+
 ## 📱 Views
 
 ### 📒 Browse
@@ -87,4 +91,4 @@ Details is a sheet that opens on image tap. It displays the comic title, alt tex
 
 ## Conclusion
 
-I had tons of fun making this app 🎉
+Had tons of fun making this app 🎉
