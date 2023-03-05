@@ -30,11 +30,11 @@ final class MainCoordinator {
         tabBarController.viewControllers = [browseVC, favouritesVC, searchVC]
         
         let tabBarItemConfig = UIImage.SymbolConfiguration(textStyle: .footnote)
-        tabBarController.tabBar.items?[0].title = "Browse"
+        tabBarController.tabBar.items?[0].title = "Browse".localized()
         tabBarController.tabBar.items?[0].image = UIImage(systemName: "photo.stack.fill", withConfiguration: tabBarItemConfig)
-        tabBarController.tabBar.items?[1].title = "Favourites"
+        tabBarController.tabBar.items?[1].title = "Favourites".localized()
         tabBarController.tabBar.items?[1].image = UIImage(systemName: "sparkles.rectangle.stack.fill", withConfiguration: tabBarItemConfig)
-        tabBarController.tabBar.items?[2].title = "Search"
+        tabBarController.tabBar.items?[2].title = "Search".localized()
         tabBarController.tabBar.items?[2].image = UIImage(systemName: "mail.and.text.magnifyingglass", withConfiguration: tabBarItemConfig)
         
         tabBarController.tabBar.tintColor = UIColor(.black)
