@@ -79,11 +79,11 @@ Browse view is displaying the data from the xkcd API. When Favourite button is t
 
 ### 💖 Favourites
 
-Favourites displays the local data with help from the good guy Core Data. The comics can be unfavourited from this view, which deletes them from the local storage. If the local storage is empty (there are no favourite comics), a message is displayed.
+Favourites displays the local data with help from Core Data. The comics can be unfavourited in this view, which deletes them from the local storage. If the local storage is empty (there are no favourite comics), a message is displayed.
 
 ### 🔍 Search
 
-Search uses a slider to select the number of a comic you want to get. I've implemented search by the comic number since the search by the text wasn't functional.
+Search uses a slider to select the number of the comic you want to get. I've implemented search by the comic number since the search by the text wasn't functional.
 
 ### 🕵️ Details
 
