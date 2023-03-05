@@ -18,6 +18,7 @@ final class BrowseVC: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var comicTitle: UILabel!
     @IBOutlet weak var comicNum: UILabel!
+    @IBOutlet weak var noContentLabel: UILabel!
     
     var coordinator: MainCoordinator
     var viewModel: ComicViewModel
@@ -110,7 +111,9 @@ private extension BrowseVC {
         Task {
             await viewModel.getLatestComic()
             setupBackground()
+            setupVisibility()
             setupImage()
+            setupNoContentLabel()
             setupNavigationButtons()
             setupAccessibilityIdentifiers()
             setupShareButton()
@@ -141,6 +144,17 @@ private extension BrowseVC {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setupVisibility() {
+        let visibility: Float = viewModel.hasComic() ? 1 : 0
+        let labelVisibility: Bool = viewModel.hasComic()
+        shareButton.layer.opacity = visibility
+        favouriteButton.layer.opacity = visibility
+        previousButton.layer.opacity = visibility
+        latestButton.layer.opacity = visibility
+        nextButton.layer.opacity = visibility
+        noContentLabel.layer.isHidden = labelVisibility
     }
     
     func setupImage() {
@@ -177,6 +191,7 @@ private extension BrowseVC {
     
     func refreshFavouriteButton() {
         favouriteButton.tintColor = viewModel.checkIfLiked() ? UIColor.favouriteButtonColor : UIColor(.black)
+        setupVisibility()
     }
     
     func setupNavigationButtons() {
@@ -187,7 +202,14 @@ private extension BrowseVC {
         refreshButtonState()
     }
     
+    func setupNoContentLabel() {
+        noContentLabel.text = "You have no favourite comics"
+        noContentLabel.font = .monospacedSystemFont(ofSize: 18, weight: .black)
+        noContentLabel.textColor = .noContentTextColor
+    }
+    
     func refreshButtonState() {
+        setupVisibility()
         previousButton.isEnabled = viewModel.getPreviousButtonState()
         latestButton.isEnabled = viewModel.getLatestButtonState()
         nextButton.isEnabled = viewModel.getNextButtonState()

@@ -91,6 +91,9 @@ extension FavouritesViewModel {
             return
         }
     }
+    func hasComic() -> Bool {
+        return comic != nil
+    }
 }
 
 extension FavouritesViewModel {

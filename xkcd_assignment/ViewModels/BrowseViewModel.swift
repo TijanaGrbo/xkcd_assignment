@@ -91,6 +91,10 @@ extension BrowseViewModel {
             storageProvider.saveComicToFavourites(comic, withImage: comicImage)
         }
     }
+    func hasComic() -> Bool {
+        return comic != nil
+    }
+    
 }
 
 extension BrowseViewModel {

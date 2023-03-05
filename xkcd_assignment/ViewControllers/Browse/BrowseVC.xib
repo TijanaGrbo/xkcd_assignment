@@ -16,6 +16,7 @@
                 <outlet property="favouriteButton" destination="xRP-ch-0zf" id="HAF-rK-swW"/>
                 <outlet property="latestButton" destination="IhS-qn-dYb" id="rtA-Hn-6IW"/>
                 <outlet property="nextButton" destination="eoc-VG-tFv" id="LXQ-uI-1cl"/>
+                <outlet property="noContentLabel" destination="UmI-DC-frO" id="RMl-cv-yiW"/>
                 <outlet property="previousButton" destination="2yB-tn-BBR" id="iQZ-m3-3WU"/>
                 <outlet property="shareButton" destination="W0h-4X-Xnc" id="NwL-up-eD9"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lez-jA-bT5"/>
@@ -26,6 +27,12 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmI-DC-frO" userLabel="No Data Message">
+                    <rect key="frame" x="196.66666666666666" y="438.66666666666669" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2hK-j3-OYi">
                     <rect key="frame" x="0.0" y="135" width="393" height="563"/>
                 </imageView>
@@ -118,6 +125,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2hK-j3-OYi" secondAttribute="trailing" id="9W4-s0-OKn"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xRP-ch-0zf" secondAttribute="trailing" constant="8" id="COl-bv-lXz"/>
                 <constraint firstItem="IhS-qn-dYb" firstAttribute="width" secondItem="eoc-VG-tFv" secondAttribute="width" id="DcZ-BI-OVJ"/>
+                <constraint firstItem="UmI-DC-frO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="FLp-Av-fEB"/>
                 <constraint firstItem="IhS-qn-dYb" firstAttribute="leading" secondItem="2yB-tn-BBR" secondAttribute="trailing" constant="8" id="M8C-z9-zVp"/>
                 <constraint firstItem="2yB-tn-BBR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="MqU-Wp-B08"/>
                 <constraint firstItem="2hK-j3-OYi" firstAttribute="top" secondItem="cvf-Jc-qos" secondAttribute="bottom" constant="16" id="PGR-rx-liN"/>
@@ -125,6 +133,7 @@
                 <constraint firstItem="IhS-qn-dYb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Tkd-kO-Plh"/>
                 <constraint firstItem="2yB-tn-BBR" firstAttribute="top" secondItem="W0h-4X-Xnc" secondAttribute="bottom" constant="8" id="UNQ-NL-jq5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cZ0-I0-XfJ" secondAttribute="trailing" id="VW4-jq-l8Q"/>
+                <constraint firstItem="UmI-DC-frO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="eBH-G9-at6"/>
                 <constraint firstItem="W0h-4X-Xnc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="eg6-gL-ja8"/>
                 <constraint firstItem="cZ0-I0-XfJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kTc-Wc-cN5"/>
                 <constraint firstItem="2hK-j3-OYi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mOc-Vs-bKs"/>
