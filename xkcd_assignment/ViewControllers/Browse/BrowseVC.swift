@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class BrowseVC: UIViewController {
+final class BrowseVC: UIViewController {
     
     @IBOutlet weak var comicImageView: UIImageView!
     @IBOutlet weak var previousButton: UIButton!
@@ -22,14 +22,14 @@ class BrowseVC: UIViewController {
     var coordinator: MainCoordinator
     var viewModel: ComicViewModel
     
-    var cancelable: AnyCancellable?
-    var comic: Comic? { didSet {
+    private var cancelable: AnyCancellable?
+    private var comic: Comic? { didSet {
         refreshViews()
     }}
-    var favouriteComic: FavouriteComic? { didSet {
+    private var favouriteComic: FavouriteComic? { didSet {
         reloadFavourites()
     }}
-    var isLiked: Bool? { didSet {
+    private var isLiked: Bool? { didSet {
         refreshFavouriteButton()
     }}
     
