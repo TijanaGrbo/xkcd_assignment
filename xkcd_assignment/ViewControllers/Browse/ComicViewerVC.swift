@@ -160,14 +160,16 @@ private extension ComicViewerVC {
     func setupImage() {
         comicImageView.layer.compositingFilter = "multiplyBlendMode"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
-        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture))
         swipeLeftGesture.direction = .left
+        comicImageView.isMultipleTouchEnabled = true
         comicImageView.isUserInteractionEnabled = true
         comicImageView.addGestureRecognizer(tapGesture)
         comicImageView.addGestureRecognizer(swipeRightGesture)
         comicImageView.addGestureRecognizer(swipeLeftGesture)
-
+        comicImageView.addGestureRecognizer(pinchGesture)
     }
     
     func setupHeaderLabels() {
@@ -275,6 +277,26 @@ private extension ComicViewerVC {
             navigateToNext()
         } else if gesture.direction == .right {
             navigateToPrevious()
+        }
+    }
+    
+    @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        guard let view = gestureRecognizer.view else { return }
+        
+        switch gestureRecognizer.state {
+        case .began, .changed:
+            view.transform = view.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale)
+            gestureRecognizer.scale = 1
+        case .ended:
+            animateBackToOriginalScale(view)
+        default:
+            break
+        }
+    }
+    
+    private func animateBackToOriginalScale(_ view: UIView) {
+        UIView.animate(withDuration: 0.3) {
+            view.transform = .identity
         }
     }
 
