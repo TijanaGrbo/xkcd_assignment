@@ -71,7 +71,7 @@ extension FavouritesViewModel {
         return comicImage
     }
     
-    func checkIfLiked() -> Bool {
+    func checkIfFavourite() -> Bool {
         guard let num = comic?.num else { return false }
         let comicNum = Int(num)
         if storageProvider.isFavourite(comicNum: Int(comicNum)) {

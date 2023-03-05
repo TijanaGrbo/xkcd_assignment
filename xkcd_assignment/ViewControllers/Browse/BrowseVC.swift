@@ -30,7 +30,7 @@ final class BrowseVC: UIViewController {
     private var favouriteComic: FavouriteComic? { didSet {
         reloadFavourites()
     }}
-    private var isLiked: Bool? { didSet {
+    private var isFavourite: Bool? { didSet {
         refreshFavouriteButton()
     }}
     
@@ -190,7 +190,7 @@ private extension BrowseVC {
     }
     
     func refreshFavouriteButton() {
-        favouriteButton.tintColor = viewModel.checkIfLiked() ? UIColor.favouriteButtonColor : UIColor(.black)
+        favouriteButton.tintColor = viewModel.checkIfFavourite() ? UIColor.favouriteButtonColor : UIColor(.black)
         setupVisibility()
     }
     
@@ -262,7 +262,7 @@ private extension BrowseVC {
         nextButton.accessibilityLabel = "\(viewModel.getNextButtonState() ? "Show next comic" : "")"
         
         favouriteButton.isAccessibilityElement = true
-        favouriteButton.accessibilityLabel = "\(viewModel.checkIfLiked() ? "Favourite" : "Not favourite"), double tap to \(viewModel.checkIfLiked() ? "remove from" : "add to") favourites"
+        favouriteButton.accessibilityLabel = "\(viewModel.checkIfFavourite() ? "Favourite" : "Not favourite"), double tap to \(viewModel.checkIfFavourite() ? "remove from" : "add to") favourites"
     }
     
     @objc func imageTapped() {

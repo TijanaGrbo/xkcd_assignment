@@ -14,7 +14,7 @@ enum AccessibilityIdentifier: String {
     case prevButton
     case latestButton
     case nextButton
-    case like
+    case favourite
     case tabBarBrowse
     case tabBarFavorites
     case tabBarSearch

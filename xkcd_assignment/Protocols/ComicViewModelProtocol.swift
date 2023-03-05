@@ -17,7 +17,7 @@ protocol ComicViewModel {
     func saveToFavourites(withImage image: UIImage)
     func loadFromFavourites()
     func favouriteButtonTapped(comicImage: UIImage)
-    func checkIfLiked() -> Bool
+    func checkIfFavourite() -> Bool
     func getComicTitle() -> String
     func getComicNum() -> String
     func getComicDescription() -> String
@@ -41,7 +41,7 @@ extension ComicViewModel {
     
     func favouriteButtonTapped(comicImage: UIImage) {}
     
-    func checkIfLiked() -> Bool {
+    func checkIfFavourite() -> Bool {
         return false
     }
 }

@@ -73,7 +73,7 @@ extension BrowseViewModel {
         loadFromFavourites()
     }
     
-    func checkIfLiked() -> Bool {
+    func checkIfFavourite() -> Bool {
         guard let comicNum = comic?.num else { return false }
         if storageProvider.isFavourite(comicNum: comicNum) {
             return true
