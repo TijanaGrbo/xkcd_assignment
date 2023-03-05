@@ -114,7 +114,9 @@ private extension FavouritesViewModel {
         loadFromFavourites()
         latestComicIndex = favouriteComics.count - 1
         currentIndex = currentIndex - 1
-        guard !favouriteComics.isEmpty else { return }
+        guard !favouriteComics.isEmpty else {
+            comic = nil
+            return }
         comic = favouriteComics[latestComicIndex]
     }
 }
