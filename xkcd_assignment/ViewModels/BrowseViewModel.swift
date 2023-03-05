@@ -103,6 +103,7 @@ extension BrowseViewModel {
     
 }
 
+// extension with get state methods
 extension BrowseViewModel {
     func getPreviousButtonState() -> Bool {
         guard let currentComicNum = comic?.num else { return false }

@@ -102,6 +102,7 @@ extension FavouritesViewModel {
     }
 }
 
+// get state methods
 extension FavouritesViewModel {
     func getPreviousButtonState() -> Bool {
         return currentIndex > 0
@@ -116,6 +117,7 @@ extension FavouritesViewModel {
     }
 }
 
+// private methods
 private extension FavouritesViewModel {
     func setComic() {
         guard !favouriteComics.isEmpty else { return }
