@@ -75,11 +75,11 @@ Currently supporting English, Serbian and Norwegian.
 
 ### 📒 Browse
 
-Browse view is displaying the data from the xkcd API. When Favourite button is tapped, the comic is saved locally using Core Data, where it's available for further use in...
+Browse view displays the data from the xkcd API. When Favourite button is tapped, the comic is saved locally using Core Data, where it's available for further use in...
 
 ### 💖 Favourites
 
-Favourites displays the local data with help from Core Data. The comics can be unfavourited in this view, which deletes them from the local storage. If the local storage is empty (there are no favourite comics), a message is displayed.
+Favourites view displays the local data with help from Core Data. The comics can be unfavourited in this view, which deletes them from the local storage. If the local storage is empty (there are no favourite comics), a message is displayed.
 
 ### 🔍 Search
 
