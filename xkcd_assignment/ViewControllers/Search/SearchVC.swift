@@ -38,8 +38,10 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         setupViews()
         bindViewModel()
     }
-    
-    func setupViews() {
+}
+
+private extension SearchVC {
+    private func setupViews() {
         Task {
             await searchViewModel.getLatestComic()
             refreshViews()
@@ -50,13 +52,13 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func bindViewModel() {
+    private func bindViewModel() {
         cancellable = searchViewModel.$comic
             .receive(on: DispatchQueue.main)
             .assign(to: \.comic, on: self)
     }
     
-    func setupBackground() {
+    private func setupBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.bottomGradientColor,
                                 UIColor.middleGradientColor,
@@ -70,7 +72,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         comicImageView.layer.compositingFilter = "multiplyBlendMode"
     }
     
-    func setupSlider() {
+    private func setupSlider() {
         sliderView.tintColor = .purple
         sliderView.minimumValue = 1
         sliderView.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
@@ -79,7 +81,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         sliderValueChanged(sliderView)
     }
     
-    func setupComicNumLabel() {
+    private func setupComicNumLabel() {
         comicNumLabel.addTarget(self, action: #selector(comicNumValueChanged), for: .allEditingEvents)
         comicNumLabel.text = String(Int(sliderView.value))
         comicNumLabel.textAlignment = .center
@@ -89,20 +91,18 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         comicNumValueChanged(comicNumLabel)
     }
     
-    func setupNameLabel() {
+    private func setupNameLabel() {
         comicNameLabel.text = comic?.title
         comicNameLabel.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicNameLabel.textColor = .black
     }
     
-    func refreshViews() {
+    private func refreshViews() {
         comicImageView.kf.setImage(with: comic?.imgURL)
         setupNameLabel()
     }
-}
-
-extension SearchVC {
-    func configureAccessibility() {
+    
+    private func configureAccessibility() {
         guard let comic = comic else { return }
         comicNameLabel.isAccessibilityElement = true
         comicNameLabel.accessibilityLabel = "Comic title: \(comic.title)"
@@ -122,7 +122,7 @@ extension SearchVC {
         return allowedCharacters.isSuperset(of: characterSet)
     }
     
-    @objc func sliderValueChanged(_ sender: UISlider) {
+    @objc private func sliderValueChanged(_ sender: UISlider) {
         self.comicNumLabel.text = String(Int(sender.value))
         debounceTimer?.invalidate()
         debounceTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
@@ -133,7 +133,7 @@ extension SearchVC {
         }
     }
     
-    @objc func comicNumValueChanged(_ sender: UITextField) {
+    @objc private func comicNumValueChanged(_ sender: UITextField) {
         guard let stringToConvert = sender.text else { return }
         self.sliderView.value = Float(stringToConvert) ?? 0
         debounceTimer?.invalidate()
