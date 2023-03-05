@@ -62,7 +62,8 @@ extension FavouritesViewModel {
     }
 
     func comicImage() -> UIImage? {
-        return comic?.image
+        guard let comicImage = comic?.image else { return UIImage() }
+        return comicImage
     }
     
     func checkIfLiked() -> Bool {
