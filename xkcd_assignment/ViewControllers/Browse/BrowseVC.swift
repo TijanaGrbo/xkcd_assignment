@@ -171,10 +171,10 @@ private extension BrowseVC {
     }
     
     func setupHeaderLabels() {
-        comicTitle.text = viewModel.setComicTitle()
+        comicTitle.text = viewModel.getComicTitle()
         comicTitle.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicTitle.textColor = .black
-        comicNum.text = viewModel.setComicNum()
+        comicNum.text = viewModel.getComicNum()
         comicNum.font = .monospacedDigitSystemFont(ofSize: 18, weight: .bold)
         comicNum.textColor = .black
     }
@@ -266,8 +266,8 @@ private extension BrowseVC {
     }
     
     @objc func imageTapped() {
-        coordinator.showDetail(title: viewModel.setComicTitle(),
-                               description: viewModel.setComicDescription())
+        coordinator.showDetail(title: viewModel.getComicTitle(),
+                               description: viewModel.getComicDescription())
     }
     
     @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
