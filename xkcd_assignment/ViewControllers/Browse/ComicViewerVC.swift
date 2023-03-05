@@ -197,15 +197,15 @@ private extension ComicViewerVC {
     }
     
     func setupNavigationButtons() {
-        previousButton.setTitle("previous", for: .normal)
-        latestButton.setTitle("latest", for: .normal)
-        nextButton.setTitle("next", for: .normal)
+        previousButton.setTitle("previous".localized(), for: .normal)
+        latestButton.setTitle("latest".localized(), for: .normal)
+        nextButton.setTitle("next".localized(), for: .normal)
         
         refreshButtonState()
     }
     
     func setupNoContentLabel() {
-        noContentLabel.text = "You have no favourite comics"
+        noContentLabel.text = "You have no favourite comics".localized()
         noContentLabel.font = .monospacedSystemFont(ofSize: 18, weight: .black)
         noContentLabel.textColor = .noContentTextColor
     }

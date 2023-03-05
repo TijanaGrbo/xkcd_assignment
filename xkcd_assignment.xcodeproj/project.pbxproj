@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E604BE0229B5324A0016B4D5 /* String+ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604BE0129B5324A0016B4D5 /* String+ex.swift */; };
+		E604BE0529B533230016B4D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E604BE0729B533230016B4D5 /* Localizable.strings */; };
 		E65E014329B1570C00D6015C /* FavouriteComic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E014129B1570C00D6015C /* FavouriteComic+CoreDataClass.swift */; };
 		E65E014429B1570C00D6015C /* FavouriteComic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E014229B1570C00D6015C /* FavouriteComic+CoreDataProperties.swift */; };
 		E673D11929AF7AB100F2CF69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D11829AF7AB100F2CF69 /* AppDelegate.swift */; };
@@ -46,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E604BE0129B5324A0016B4D5 /* String+ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ex.swift"; sourceTree = "<group>"; };
+		E604BE0629B533230016B4D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E604BE0829B533260016B4D5 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E604BE0929B533280016B4D5 /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E65E014129B1570C00D6015C /* FavouriteComic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteComic+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E65E014229B1570C00D6015C /* FavouriteComic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteComic+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E673D11529AF7AB100F2CF69 /* xkcd_assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xkcd_assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +203,7 @@
 		E6F4C58429B40C9E00EDCF1B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E604BE0129B5324A0016B4D5 /* String+ex.swift */,
 				E6F4C57729B3F52900EDCF1B /* UIColor+ex.swift */,
 			);
 			path = Extensions;
@@ -251,6 +258,7 @@
 			children = (
 				E673D12129AF7AB300F2CF69 /* Assets.xcassets */,
 				E673D12629AF7AB300F2CF69 /* Info.plist */,
+				E604BE0729B533230016B4D5 /* Localizable.strings */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -322,6 +330,8 @@
 			knownRegions = (
 				en,
 				Base,
+				nb,
+				sr,
 			);
 			mainGroup = E673D10C29AF7AB000F2CF69;
 			packageReferences = (
@@ -342,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E604BE0529B533230016B4D5 /* Localizable.strings in Resources */,
 				E673D15229B10D5F00F2CF69 /* SearchVC.xib in Resources */,
 				E673D13729AFBED500F2CF69 /* ComicViewerVC.xib in Resources */,
 				E673D12229AF7AB300F2CF69 /* Assets.xcassets in Resources */,
@@ -365,6 +376,7 @@
 			files = (
 				E673D13129AFA8F200F2CF69 /* Comic.swift in Sources */,
 				E673D12F29AFA3A000F2CF69 /* ComicViewerVC.swift in Sources */,
+				E604BE0229B5324A0016B4D5 /* String+ex.swift in Sources */,
 				E6F4C55B29B2A19F00EDCF1B /* ComicViewModelProtocol.swift in Sources */,
 				E673D12D29AFA31400F2CF69 /* MainCoordinator.swift in Sources */,
 				E65E014329B1570C00D6015C /* FavouriteComic+CoreDataClass.swift in Sources */,
@@ -403,6 +415,19 @@
 			targetProxy = E6F4C56A29B3AE0E00EDCF1B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E604BE0729B533230016B4D5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E604BE0629B533230016B4D5 /* en */,
+				E604BE0829B533260016B4D5 /* nb */,
+				E604BE0929B533280016B4D5 /* sr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E673D12729AF7AB300F2CF69 /* Debug */ = {
