@@ -34,6 +34,7 @@ extension StorageProvider {
         favouriteComic.num = Int16(comic.num)
         favouriteComic.title = comic.title
         favouriteComic.alt = comic.alt
+        favouriteComic.imgUrlString = comic.img
         favouriteComic.image = comicImage
 
         do {

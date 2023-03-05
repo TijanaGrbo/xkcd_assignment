@@ -3,6 +3,7 @@
     <entity name="FavouriteComic" representedClassName="FavouriteComic" syncable="YES">
         <attribute name="alt" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="Transformable" valueTransformerName="UIImageTransformer" customClassName="UIImage"/>
+        <attribute name="imgUrlString" optional="YES" attributeType="String"/>
         <attribute name="num" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
