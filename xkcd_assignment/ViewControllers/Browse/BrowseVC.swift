@@ -90,7 +90,7 @@ final class BrowseVC: UIViewController {
 }
 
 private extension BrowseVC {
-    private func setupViews() {
+    func setupViews() {
         Task {
             await viewModel.getLatestComic()
             setupBackground()
@@ -103,7 +103,7 @@ private extension BrowseVC {
         }
     }
     
-    private func bindViewModel() {
+    func bindViewModel() {
         if let browseViewModel = viewModel as? BrowseViewModel {
             cancelable = browseViewModel.$comic
                 .receive(on: DispatchQueue.main)
@@ -115,7 +115,7 @@ private extension BrowseVC {
         }
     }
     
-    private func setupBackground() {
+    func setupBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.bottomGradientColor,
                                 UIColor.middleGradientColor,
@@ -127,14 +127,20 @@ private extension BrowseVC {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    private func setupImage() {
+    func setupImage() {
         comicImageView.layer.compositingFilter = "multiplyBlendMode"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeLeftGesture.direction = .left
         comicImageView.isUserInteractionEnabled = true
         comicImageView.addGestureRecognizer(tapGesture)
+        comicImageView.addGestureRecognizer(swipeRightGesture)
+        comicImageView.addGestureRecognizer(swipeLeftGesture)
+
     }
     
-    private func setupHeaderLabels() {
+    func setupHeaderLabels() {
         comicTitle.text = viewModel.setComicTitle()
         comicTitle.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicTitle.textColor = .black
@@ -143,21 +149,21 @@ private extension BrowseVC {
         comicNum.textColor = .black
     }
     
-    private func setupShareButton() {
+    func setupShareButton() {
         shareButton.setImage(UIImage(systemName: "square.and.arrow.up.fill"), for: .normal)
         shareButton.tintColor = UIColor(.black)
     }
     
-    private func setupFavouriteButton() {
+    func setupFavouriteButton() {
         favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         refreshFavouriteButton()
     }
     
-    private func refreshFavouriteButton() {
+    func refreshFavouriteButton() {
         favouriteButton.tintColor = viewModel.checkIfLiked() ? UIColor.favouriteButtonColor : UIColor(.black)
     }
     
-    private func setupNavigationButtons() {
+    func setupNavigationButtons() {
         previousButton.setTitle("previous", for: .normal)
         latestButton.setTitle("latest", for: .normal)
         nextButton.setTitle("next", for: .normal)
@@ -165,7 +171,7 @@ private extension BrowseVC {
         refreshButtonState()
     }
     
-    private func refreshButtonState() {
+    func refreshButtonState() {
         previousButton.isEnabled = viewModel.getPreviousButtonState()
         latestButton.isEnabled = viewModel.getLatestButtonState()
         nextButton.isEnabled = viewModel.getNextButtonState()
@@ -175,7 +181,7 @@ private extension BrowseVC {
         nextButton.tintColor = .black.withAlphaComponent(viewModel.getNextButtonState() ? 1.0 : 0.6)
     }
     
-    private func refreshViews() {
+    func refreshViews() {
         comicImageView.kf.setImage(with: self.viewModel.comicImageURL())
         setupHeaderLabels()
         refreshFavouriteButton()
@@ -183,13 +189,13 @@ private extension BrowseVC {
         configureAccessibility()
     }
     
-    private func reloadFavourites() {
+    func reloadFavourites() {
         comicImageView.image = viewModel.comicImage()
         setupHeaderLabels()
         refreshFavouriteButton()
     }
     
-    private func setupAccessibilityIdentifiers() {
+    func setupAccessibilityIdentifiers() {
         comicNum.accessibilityIdentifier = AccessibilityIdentifier.comicNum.rawValue
         nextButton.accessibilityIdentifier = AccessibilityIdentifier.nextButton.rawValue
         previousButton.accessibilityIdentifier = AccessibilityIdentifier.prevButton.rawValue
@@ -197,7 +203,7 @@ private extension BrowseVC {
         comicImageView.accessibilityIdentifier = "\(comic?.num ?? 0)"
     }
     
-    private func configureAccessibility() {
+    func configureAccessibility() {
         guard let comic = comic else { return }
         comicTitle.isAccessibilityElement = true
         comicTitle.accessibilityLabel = "Comic title: \(comic.title)"
@@ -221,7 +227,7 @@ private extension BrowseVC {
         favouriteButton.accessibilityLabel = "\(viewModel.checkIfLiked() ? "Favourite" : "Not favourite"), double tap to \(viewModel.checkIfLiked() ? "remove from" : "add to") favourites"
     }
     
-    @objc private func imageTapped() {
+    @objc func imageTapped() {
         coordinator.showDetail(title: viewModel.setComicTitle(),
                                description: viewModel.setComicDescription())
     }
