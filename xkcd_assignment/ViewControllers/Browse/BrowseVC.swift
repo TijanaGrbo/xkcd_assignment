@@ -56,24 +56,15 @@ final class BrowseVC: UIViewController {
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
-        Task {
-            await viewModel.getPreviousComic()
-            refreshButtonState()
-        }
+        navigateToPrevious()
     }
     
     @IBAction func latestButtonTapped(_ sender: Any) {
-        Task {
-            await viewModel.getLatestComic()
-            refreshButtonState()
-        }
+        navigateToLatest()
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        Task {
-            await viewModel.getNextComic()
-            refreshButtonState()
-        }
+        navigateToNext()
     }
     
     @IBAction func favouriteButtonTapped(_ sender: Any) {
@@ -89,6 +80,31 @@ final class BrowseVC: UIViewController {
     }
 }
 
+// private action helpers
+private extension BrowseVC {
+    func navigateToPrevious() {
+        Task {
+            await viewModel.getPreviousComic()
+            refreshButtonState()
+        }
+    }
+    
+    func navigateToLatest() {
+        Task {
+            await viewModel.getLatestComic()
+            refreshButtonState()
+        }
+    }
+    
+    func navigateToNext() {
+        Task {
+            await viewModel.getNextComic()
+            refreshButtonState()
+        }
+    }
+}
+
+// Private helpers
 private extension BrowseVC {
     func setupViews() {
         Task {
@@ -231,4 +247,13 @@ private extension BrowseVC {
         coordinator.showDetail(title: viewModel.setComicTitle(),
                                description: viewModel.setComicDescription())
     }
+    
+    @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .left {
+            navigateToNext()
+        } else if gesture.direction == .right {
+            navigateToPrevious()
+        }
+    }
+
 }
