@@ -25,17 +25,17 @@ final class xkcd_assignment_UITests: XCTestCase {
         app.buttons[AccessibilityIdentifier.prevButton.rawValue].firstMatch.tap()
         
         let prevComicValue = app.staticTexts[AccessibilityIdentifier.comicNum.rawValue].firstMatch.label
-        XCTAssert(latestComicValue != prevComicValue) // assert that we navigated from the page and the comic num has changed
-        
+        XCTAssertNotEqual(prevComicValue, latestComicValue) // assert that we navigated from the page and the comic num has changed
+
         app.buttons[AccessibilityIdentifier.latestButton.rawValue].firstMatch.tap()
         
         let newLatestComicValue = app.staticTexts[AccessibilityIdentifier.comicNum.rawValue].firstMatch.label
-        XCTAssert(newLatestComicValue == latestComicValue) // assert that we navigated back to the latest comic
+        XCTAssertEqual(newLatestComicValue, latestComicValue) // assert that we navigated back to the latest comic
         
         app.buttons[AccessibilityIdentifier.prevButton.rawValue].firstMatch.tap()
         app.buttons[AccessibilityIdentifier.nextButton.rawValue].firstMatch.tap()
         
         let currentComicValue = app.staticTexts[AccessibilityIdentifier.comicNum.rawValue].firstMatch.label
-        XCTAssert(currentComicValue == latestComicValue) // verify that we moved to previous and back to the latest
+        XCTAssertEqual(currentComicValue, latestComicValue) // verify that we moved to previous and back to the latest
     }
 }
