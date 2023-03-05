@@ -26,18 +26,21 @@ final class MainCoordinator {
         let searchVM = SearchViewModel()
         let searchVC = SearchVC(searchViewModel: searchVM)
         
-        let tabBar = TabBarVC()
-        tabBar.viewControllers = [browseVC, favouritesVC, searchVC]
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [browseVC, favouritesVC, searchVC]
         
         let tabBarItemConfig = UIImage.SymbolConfiguration(textStyle: .footnote)
-        tabBar.tabBar.items?[0].title = "Browse"
-        tabBar.tabBar.items?[0].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
-        tabBar.tabBar.items?[1].title = "Favourites"
-        tabBar.tabBar.items?[1].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
-        tabBar.tabBar.items?[2].title = "Search"
-        tabBar.tabBar.items?[2].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
+        tabBarController.tabBar.items?[0].title = "Browse"
+        tabBarController.tabBar.items?[0].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
+        tabBarController.tabBar.items?[1].title = "Favourites"
+        tabBarController.tabBar.items?[1].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
+        tabBarController.tabBar.items?[2].title = "Search"
+        tabBarController.tabBar.items?[2].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
         
-        navController.pushViewController(tabBar, animated: true)
+        tabBarController.tabBar.tintColor = UIColor(.black)
+        tabBarController.tabBar.unselectedItemTintColor = UIColor(.black).withAlphaComponent(0.4)
+        
+        navController.pushViewController(tabBarController, animated: true)
     }
     
     func shareComic(_ url: URL) {

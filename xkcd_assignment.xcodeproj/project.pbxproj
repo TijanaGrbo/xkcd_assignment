@@ -19,8 +19,6 @@
 		E673D13729AFBED500F2CF69 /* BrowseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E673D13629AFBED500F2CF69 /* BrowseVC.xib */; };
 		E673D13929AFC41400F2CF69 /* BrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D13829AFC41400F2CF69 /* BrowseViewModel.swift */; };
 		E673D13C29AFC8B400F2CF69 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E673D13B29AFC8B400F2CF69 /* Kingfisher */; };
-		E673D13E29B0CD5A00F2CF69 /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E673D13D29B0CD5A00F2CF69 /* TabBarVC.xib */; };
-		E673D14029B0CD9C00F2CF69 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D13F29B0CD9C00F2CF69 /* TabBarVC.swift */; };
 		E673D14629B0D9B200F2CF69 /* xkcd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E673D14429B0D9B200F2CF69 /* xkcd.xcdatamodeld */; };
 		E673D14829B0DBC500F2CF69 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D14729B0DBC500F2CF69 /* ImageTransformer.swift */; };
 		E673D14A29B0DC6A00F2CF69 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673D14929B0DC6A00F2CF69 /* StorageProvider.swift */; };
@@ -61,8 +59,6 @@
 		E673D13229AFAC0F00F2CF69 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		E673D13629AFBED500F2CF69 /* BrowseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseVC.xib; sourceTree = "<group>"; };
 		E673D13829AFC41400F2CF69 /* BrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewModel.swift; sourceTree = "<group>"; };
-		E673D13D29B0CD5A00F2CF69 /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
-		E673D13F29B0CD9C00F2CF69 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		E673D14529B0D9B200F2CF69 /* xkcd.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = xkcd.xcdatamodel; sourceTree = "<group>"; };
 		E673D14729B0DBC500F2CF69 /* ImageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
 		E673D14929B0DC6A00F2CF69 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
@@ -156,7 +152,6 @@
 		E6F4C57E29B40BCB00EDCF1B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E6F4C58029B40BE400EDCF1B /* TabBar */,
 				E6F4C58129B40BF600EDCF1B /* Browse */,
 				E6F4C58229B40C0300EDCF1B /* Search */,
 				E6F4C57F29B40BD800EDCF1B /* ComicDetail */,
@@ -171,15 +166,6 @@
 				E6F4C57929B4020B00EDCF1B /* ComicDetailVC.xib */,
 			);
 			path = ComicDetail;
-			sourceTree = "<group>";
-		};
-		E6F4C58029B40BE400EDCF1B /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				E673D13F29B0CD9C00F2CF69 /* TabBarVC.swift */,
-				E673D13D29B0CD5A00F2CF69 /* TabBarVC.xib */,
-			);
-			path = TabBar;
 			sourceTree = "<group>";
 		};
 		E6F4C58129B40BF600EDCF1B /* Browse */ = {
@@ -359,7 +345,6 @@
 				E673D15229B10D5F00F2CF69 /* SearchVC.xib in Resources */,
 				E673D13729AFBED500F2CF69 /* BrowseVC.xib in Resources */,
 				E673D12229AF7AB300F2CF69 /* Assets.xcassets in Resources */,
-				E673D13E29B0CD5A00F2CF69 /* TabBarVC.xib in Resources */,
 				E6F4C57A29B4020B00EDCF1B /* ComicDetailVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,7 +369,6 @@
 				E673D12D29AFA31400F2CF69 /* MainCoordinator.swift in Sources */,
 				E65E014329B1570C00D6015C /* FavouriteComic+CoreDataClass.swift in Sources */,
 				E673D14A29B0DC6A00F2CF69 /* StorageProvider.swift in Sources */,
-				E673D14029B0CD9C00F2CF69 /* TabBarVC.swift in Sources */,
 				E673D14629B0D9B200F2CF69 /* xkcd.xcdatamodeld in Sources */,
 				E673D15629B111F300F2CF69 /* SearchViewModel.swift in Sources */,
 				E6F4C57329B3AE8E00EDCF1B /* AccessibilityIdentifiers.swift in Sources */,
