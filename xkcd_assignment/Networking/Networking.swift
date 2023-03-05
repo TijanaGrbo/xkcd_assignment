@@ -6,7 +6,7 @@
 //
 
 import Foundation
-#warning("Add comments")
+
 enum Endpoint {
     case latestComic
     case withNum(comicNum: Int)
@@ -41,7 +41,7 @@ class ComicAPI {
     static let shared = ComicAPI()
     
     private let urlSession = URLSession.shared
-    #warning("explain")
+
     private init() {}
 
     func getLatestComic() async throws -> Comic {
@@ -66,8 +66,7 @@ private extension ComicAPI {
             throw APIError.network(description: "Failed to receive data: \(error)")
         }
     }
-    
-    // Create a separate decoding method to reduce repetition
+
     func decodeComic(from data: Data) throws -> Comic {
         do {
             return try JSONDecoder().decode(Comic.self, from: data)
