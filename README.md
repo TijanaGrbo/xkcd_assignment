@@ -11,7 +11,7 @@ xkcd comic browser
 
 ## ⚙️ Functionalities
 
-I decided at the very beginning which functionalities to add to my MVP and which ones to leave out due to time constraints. 
+I decided at the very beginning which functionalities to add to my MVP and which ones to leave out due to the time constraints. 
 
 The repo project is how I usually keep track of tasks, so I created [this one](https://github.com/users/TijanaGrbo/projects/5/views/1) and added an issue for each requirement. The ones I decided to leave out are in the Backlog, just in case I stumbled upon some extra time lying around (which I haven't).
 
