@@ -24,7 +24,7 @@ final class MainCoordinator {
         let favouritesVC = BrowseVC(coordinator: self, viewModel: favouritesVM)
         
         let searchVM = SearchViewModel()
-        let searchVC = SearchVC(searchViewModel: searchVM)
+        let searchVC = SearchVC(coordinator: self, searchViewModel: searchVM)
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [browseVC, favouritesVC, searchVC]

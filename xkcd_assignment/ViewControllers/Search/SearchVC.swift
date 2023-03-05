@@ -15,7 +15,8 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var comicImageView: UIImageView!
     @IBOutlet weak var comicNameLabel: UILabel!
     
-    let searchViewModel: SearchViewModel
+    var coordinator: MainCoordinator
+    let viewModel: SearchViewModel
     
     private var debounceTimer: Timer?
     var cancellable: AnyCancellable?
@@ -23,8 +24,9 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         refreshViews()
     }}
     
-    init(searchViewModel: SearchViewModel) {
-        self.searchViewModel = searchViewModel
+    init(coordinator: MainCoordinator, searchViewModel: SearchViewModel) {
+        self.coordinator = coordinator
+        self.viewModel = searchViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,7 +45,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
 private extension SearchVC {
     private func setupViews() {
         Task {
-            await searchViewModel.getLatestComic()
+            await viewModel.getLatestComic()
             refreshViews()
             configureAccessibility()
             setupComicNumLabel()
@@ -53,7 +55,7 @@ private extension SearchVC {
     }
     
     private func bindViewModel() {
-        cancellable = searchViewModel.$comic
+        cancellable = viewModel.$comic
             .receive(on: DispatchQueue.main)
             .assign(to: \.comic, on: self)
     }
@@ -70,13 +72,16 @@ private extension SearchVC {
         view.layer.insertSublayer(gradientLayer, at: 0)
         
         comicImageView.layer.compositingFilter = "multiplyBlendMode"
+        comicImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        comicImageView.addGestureRecognizer(tapGesture)
     }
     
     private func setupSlider() {
         sliderView.tintColor = .purple
         sliderView.minimumValue = 1
         sliderView.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
-        sliderView.maximumValue = Float(searchViewModel.latestComicNum ?? 0)
+        sliderView.maximumValue = Float(viewModel.latestComicNum ?? 0)
         sliderView.value = sliderView.maximumValue
         sliderValueChanged(sliderView)
     }
@@ -113,6 +118,11 @@ private extension SearchVC {
         comicImageView.isAccessibilityElement = true
         comicImageView.accessibilityLabel = comic.alt
     }
+    
+    @objc func imageTapped() {
+        coordinator.showDetail(title: viewModel.getComicTitle(),
+                               description: viewModel.getComicDescription())
+    }
 }
 
 extension SearchVC {
@@ -128,7 +138,7 @@ extension SearchVC {
         debounceTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
             guard let self = self else { return }
             Task {
-                await self.searchViewModel.getComic(withNum: Int(sender.value))
+                await self.viewModel.getComic(withNum: Int(sender.value))
             }
         }
     }
@@ -140,7 +150,7 @@ extension SearchVC {
         debounceTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
             guard let self = self else { return }
             Task {
-                await self.searchViewModel.getComic(withNum: Int(stringToConvert) ?? 0)
+                await self.viewModel.getComic(withNum: Int(stringToConvert) ?? 0)
             }
         }
     }
