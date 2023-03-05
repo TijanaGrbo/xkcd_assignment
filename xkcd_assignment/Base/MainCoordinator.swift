@@ -31,11 +31,11 @@ final class MainCoordinator {
         
         let tabBarItemConfig = UIImage.SymbolConfiguration(textStyle: .footnote)
         tabBarController.tabBar.items?[0].title = "Browse"
-        tabBarController.tabBar.items?[0].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
+        tabBarController.tabBar.items?[0].image = UIImage(systemName: "photo.stack.fill", withConfiguration: tabBarItemConfig)
         tabBarController.tabBar.items?[1].title = "Favourites"
-        tabBarController.tabBar.items?[1].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
+        tabBarController.tabBar.items?[1].image = UIImage(systemName: "sparkles.rectangle.stack.fill", withConfiguration: tabBarItemConfig)
         tabBarController.tabBar.items?[2].title = "Search"
-        tabBarController.tabBar.items?[2].image = UIImage(systemName: "circle.fill", withConfiguration: tabBarItemConfig)
+        tabBarController.tabBar.items?[2].image = UIImage(systemName: "mail.and.text.magnifyingglass", withConfiguration: tabBarItemConfig)
         
         tabBarController.tabBar.tintColor = UIColor(.black)
         tabBarController.tabBar.unselectedItemTintColor = UIColor(.black).withAlphaComponent(0.4)
