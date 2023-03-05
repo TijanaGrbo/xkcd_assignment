@@ -154,4 +154,12 @@ extension SearchVC {
             }
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let newEntry = textField.text, let newComicInt = Int(newEntry) else { return false }
+        Task {
+            await self.viewModel.getComic(withNum: newComicInt)
+        }
+        return true
+    }
 }
