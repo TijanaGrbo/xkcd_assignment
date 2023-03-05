@@ -81,7 +81,7 @@ final class ComicViewerVC: UIViewController {
     }
 }
 
-// private action helpers
+// Private action helpers
 private extension ComicViewerVC {
     func navigateToPrevious() {
         Task {
@@ -105,7 +105,7 @@ private extension ComicViewerVC {
     }
 }
 
-// Private helpers
+// Private setup/reload helpers
 private extension ComicViewerVC {
     func setupViews() {
         Task {
