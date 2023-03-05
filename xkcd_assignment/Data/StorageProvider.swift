@@ -20,6 +20,7 @@ class StorageProvider: ObservableObject {
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {
                 print("Core Data store failed to load with error: \(error).")
+                return
             }
 
             self.persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
