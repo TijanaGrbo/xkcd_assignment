@@ -62,6 +62,11 @@ extension BrowseViewModel {
         return "#\(comicNum)"
     }
     
+    func setComicDescription() -> String {
+        guard let comicDescription = comic?.alt else { return "" }
+        return comicDescription
+    }
+    
     func saveToFavourites(withImage image: UIImage) {
         guard let comic = comic else { return }
         storageProvider.saveComicToFavourites(comic, withImage: image)

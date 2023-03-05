@@ -222,7 +222,7 @@ private extension BrowseVC {
     }
     
     @objc private func imageTapped() {
-        coordinator.showDetail(title: comic?.title ?? "",
-                               description: comic?.alt ?? "")
+        coordinator.showDetail(title: viewModel.setComicTitle(),
+                               description: viewModel.setComicDescription())
     }
 }

@@ -60,6 +60,11 @@ extension FavouritesViewModel {
         guard let comicNum = comic?.num else { return "" }
         return "#\(comicNum)"
     }
+    
+    func setComicDescription() -> String {
+        guard let comicDescription = comic?.alt else { return "" }
+        return comicDescription
+    }
 
     func comicImage() -> UIImage? {
         guard let comicImage = comic?.image else { return UIImage() }

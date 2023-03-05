@@ -20,6 +20,7 @@ protocol ComicViewModel {
     func checkIfLiked() -> Bool
     func setComicTitle() -> String
     func setComicNum() -> String
+    func setComicDescription() -> String
     func getPreviousButtonState() -> Bool
     func getLatestButtonState() -> Bool
     func getNextButtonState() -> Bool
