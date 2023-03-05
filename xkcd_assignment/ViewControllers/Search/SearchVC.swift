@@ -42,8 +42,9 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     }
 }
 
+// private methods
 private extension SearchVC {
-    private func setupViews() {
+    func setupViews() {
         Task {
             await viewModel.getLatestComic()
             refreshViews()
@@ -54,13 +55,13 @@ private extension SearchVC {
         }
     }
     
-    private func bindViewModel() {
+    func bindViewModel() {
         cancellable = viewModel.$comic
             .receive(on: DispatchQueue.main)
             .assign(to: \.comic, on: self)
     }
     
-    private func setupBackground() {
+    func setupBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.bottomGradientColor,
                                 UIColor.middleGradientColor,
@@ -77,7 +78,7 @@ private extension SearchVC {
         comicImageView.addGestureRecognizer(tapGesture)
     }
     
-    private func setupSlider() {
+    func setupSlider() {
         sliderView.tintColor = .purple
         sliderView.minimumValue = 1
         sliderView.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
@@ -86,7 +87,7 @@ private extension SearchVC {
         sliderValueChanged(sliderView)
     }
     
-    private func setupComicNumLabel() {
+    func setupComicNumLabel() {
         comicNumLabel.addTarget(self, action: #selector(comicNumValueChanged), for: .allEditingEvents)
         comicNumLabel.text = String(Int(sliderView.value))
         comicNumLabel.textAlignment = .center
@@ -96,18 +97,18 @@ private extension SearchVC {
         comicNumValueChanged(comicNumLabel)
     }
     
-    private func setupNameLabel() {
+    func setupNameLabel() {
         comicNameLabel.text = comic?.title
         comicNameLabel.font = .monospacedSystemFont(ofSize: 28, weight: .black)
         comicNameLabel.textColor = .black
     }
     
-    private func refreshViews() {
+    func refreshViews() {
         comicImageView.kf.setImage(with: comic?.imgURL)
         setupNameLabel()
     }
     
-    private func configureAccessibility() {
+    func configureAccessibility() {
         guard let comic = comic else { return }
         comicNameLabel.isAccessibilityElement = true
         comicNameLabel.accessibilityLabel = "Comic title: \(comic.title)"
@@ -125,6 +126,7 @@ private extension SearchVC {
     }
 }
 
+// interaction methods and delegates
 extension SearchVC {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
