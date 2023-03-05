@@ -51,17 +51,17 @@ extension FavouritesViewModel {
         getLatestComic()
     }
     
-    func setComicTitle() -> String {
+    func getComicTitle() -> String {
         guard let comicTitle = comic?.title else { return "" }
         return comicTitle
     }
     
-    func setComicNum() -> String {
+    func getComicNum() -> String {
         guard let comicNum = comic?.num else { return "" }
         return "#\(comicNum)"
     }
     
-    func setComicDescription() -> String {
+    func getComicDescription() -> String {
         guard let comicDescription = comic?.alt else { return "" }
         return comicDescription
     }
