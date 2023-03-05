@@ -7,9 +7,9 @@
 
 import UIKit
 
-    var navController: UINavigationController
-    let storageProvider: StorageProvider
 final class MainCoordinator {
+    private var navController: UINavigationController
+    private let storageProvider: StorageProvider
     
     init(navController: UINavigationController, storageProvider: StorageProvider) {
         self.navController = navController
