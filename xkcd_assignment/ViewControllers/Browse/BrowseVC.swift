@@ -76,7 +76,7 @@ final class BrowseVC: UIViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
-        guard let imageURL = comic?.imgURL else { return }
+        guard let imageURL = viewModel.getSharableLink() else { return }
         coordinator.shareComic(imageURL)
     }
 }

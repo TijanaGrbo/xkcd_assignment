@@ -91,6 +91,12 @@ extension FavouritesViewModel {
             return
         }
     }
+    
+    func getSharableLink() -> URL? {
+        guard let imageUrlString = comic?.imgUrlString else { return nil }
+        return URL(string: imageUrlString)
+    }
+    
     func hasComic() -> Bool {
         return comic != nil
     }

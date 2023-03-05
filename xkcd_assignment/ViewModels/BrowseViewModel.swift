@@ -91,6 +91,12 @@ extension BrowseViewModel {
             storageProvider.saveComicToFavourites(comic, withImage: comicImage)
         }
     }
+    
+    func getSharableLink() -> URL? {
+        guard let imageUrlString = comic?.img else { return nil }
+        return URL(string: imageUrlString)
+    }
+    
     func hasComic() -> Bool {
         return comic != nil
     }

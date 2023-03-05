@@ -24,6 +24,7 @@ protocol ComicViewModel {
     func getPreviousButtonState() -> Bool
     func getLatestButtonState() -> Bool
     func getNextButtonState() -> Bool
+    func getSharableLink() -> URL?
     func hasComic() -> Bool
 }
 
