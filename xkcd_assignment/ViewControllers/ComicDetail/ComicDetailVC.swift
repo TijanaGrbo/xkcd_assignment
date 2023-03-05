@@ -34,6 +34,13 @@ class ComicDetailVC: UIViewController {
         setupBackground()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if let gradientLayer = view.layer.sublayers?.first(where: { $0 is CAGradientLayer }) as? CAGradientLayer {
+            gradientLayer.frame = CGRect(origin: CGPoint.zero, size: size)
+        }
+    }
+    
     func setupLabels() {
         comicDescriptionTitleLabel.text = comicTitle
         comicDetailLabel.text = detailLabelString

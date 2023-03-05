@@ -40,6 +40,17 @@ class SearchVC: UIViewController, UITextFieldDelegate {
         setupViews()
         bindViewModel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupBackground()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if let gradientLayer = view.layer.sublayers?.first(where: { $0 is CAGradientLayer }) as? CAGradientLayer {
+            gradientLayer.frame = CGRect(origin: CGPoint.zero, size: size)
+        }
+    }
 }
 
 // private methods
